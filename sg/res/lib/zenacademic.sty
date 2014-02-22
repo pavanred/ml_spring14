@@ -1,0 +1,86 @@
+%%
+%% Paul Landes  4/01/2011
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{zenacademic}[2013/10/19 Academic Document]
+
+% ------ variables renewed in each doc instance (optionally)
+\providecommand{\theuniversity}{UNIVERSITY}
+% ------
+
+
+\usepackage{zendesigndoc}
+
+\renewcommand{\ddcompanydesclaimer}{\theuniversity}
+\renewcommand{\revisioncmd}{}
+
+\providecommand{\framevar}{oframed}
+
+%% -- Equations
+\usepackage{framed}
+\usepackage{tocloft}
+\usepackage{amsmath}
+
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{ddequations}{equ}{{\cftloftitlefont\listequationsname}}
+\newcommand{\ddequations}[1]{%
+\addcontentsline{equ}{ddequations}{\protect\numberline{\theequation}#1}\par}
+
+\newenvironment{ddexample}[2]%
+{%
+\ddequations{#1}
+\begin{\framevar}
+\noindent{\bf #1}\hfill{\footnotesize #2}\\\\
+\noindent
+}%
+{%
+\end{\framevar}}
+
+\newenvironment{ddequation}[4]%
+{%
+\newcommand{\ddequationfoot}{\ddequations{#2}#4}%
+\begin{\framevar}
+\noindent%
+#3
+\begin{equation}
+\label{eq:#1}
+\begin{gathered}
+}%
+{%
+\end{gathered}%
+\end{equation}%
+\ddequationfoot%
+\end{\framevar}}
+
+
+%% study guide
+\newenvironment{sgequation}[3]%
+{\begin{ddequation}{#1}{#2}{{\bf #2}\hfill {\footnotesize #3}}{}}%
+{\end{ddequation}}
+
+\newenvironment{sgequationpage}[3]%
+{\begin{ddequation}{#1}{#2}{{\bf #2}\hfill {\footnotesize Page #3}}{}}%
+{\end{ddequation}}
+
+\newenvironment{sgequationsite}[4]%
+{\begin{ddequation}{#1}{#2}{{\bf #2}\hfill {\footnotesize \href{#3}{#4}}}{}}%
+{\end{ddequation}}
+
+\newenvironment{sgequationdesc}[4]%
+{\begin{ddequation}{#1}{#2}{{\bf #2}\hfill {\footnotesize #3}}{\noindent #4}}%
+{\end{ddequation}}
+
+\newenvironment{sgequationpagedesc}[4]%
+{\begin{ddequation}{#1}{#2}{{\bf #2}\hfill {\footnotesize Page #3}}{\noindent #4}}%
+{\end{ddequation}}
+
+\newcommand{\concept}[2]{%
+\noindent%
+#1 \hfill Page #2
+\addcontentsline{equ}{ddequations}{\protect\numberline{\theequation}#1}\\}
+
+\newcommand{\conceptdesc}[3]{%
+\noindent%
+#1 (#3) \hfill Page #2
+\addcontentsline{equ}{ddequations}{\protect\numberline{\theequation}#1}\\}

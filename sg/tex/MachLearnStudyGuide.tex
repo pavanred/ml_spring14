@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+
+% ------ variables to modify for each doc instance
+\newcommand{\theauthor}{Paul Landes}
+\newcommand{\revision}{1.0}
+\newcommand{\doctitle}{Machine Learning Spring 2014}
+\newcommand{\doctype}{Study Guide}
+\newcommand{\theuniversity}{University of Illinois at Chicago}
+% ------
+
+\usepackage{zenacademic}
+\usepackage{zenacademicstats}
+\ddfontset
+
+\begin{document}
+
+\maketitle
+\listofddequations
+\thispagestyle{empty}
+
+\begin{sgequationsite}{mean}{Mean}{http://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics/cc-7th-central-tendency/v/mean-median-and-mode}{Khan's Academy}
+\mu \df \sum x P(x) = \frac{1}{N}\sum_{i=1}^{N} x_i
+\end{sgequationsite}
+
+\begin{sgequationsite}{var-std}{Variance and Standard Deviation}{http://www.khanacademy.org/math/probability/descriptive-statistics/variance_std_deviation/v/range--variance-and-standard-deviation-as-measures-of-dispersion}{Khan's Academy}
+\textrm{Var}(X) = E[(X - \mu)^2] \df \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2\\
+\textrm{Var}(X) = \sigma^2 \;
+\Longleftrightarrow \;
+\sigma = \sqrt{\textrm{Var}(X)}\\
+\Longleftrightarrow \;
+\int(x - \mu)^2 f(x)dx = \int x^2 f(x)dx - \mu^2
+\end{sgequationsite}
+
+
+\begin{sgequationpagedesc}{bindist}{Bernoulli/Binomial Distribution}{34}{%
+Models outcomes of coin tosses.  Coin toss $n$ times with $X \in \{0, \dots,
+n\}$.  Probability $\theta$ is the parameter of, for example, fairness of the
+coin.
+
+\begin{packedlist}
+  \item Expected number of ``heads'' outcomes in 10 flips.
+  \item Given 10 flips what is the probability of at least 8 being ``heads''?
+  \item Given 3 heads, 2 tails, what is the estimate of $\theta$?
+  \item How far will this estimate be from true $\theta^*$?
+\end{packedlist}}
+\textrm{Bin}(k \g n, \theta) \df {n\choose k} \theta^{k}(1 - \theta)^{n - k}
+\end{sgequationpagedesc}
+
+\begin{sgequationpagedesc}{likelihood-book}{Likelihood Per Book}{67}{%
+Size principle/Occam's razor: model favors simplest hypothesis consistent with
+data.}
+P(\td \g h) = \left[ \frac{1}{|h|} \right]^N
+\end{sgequationpagedesc}
+
+\begin{sgequationpagedesc}{likelihood}{Likelihood Function}{Slides PS 2 19}{%
+Probability of data given this model hypothesis.}
+\likelihoodfn
+\end{sgequationpagedesc}
+
+\begin{sgequationdesc}{mle}{Maximum Likelihood Estimation (MLE)}{Slides PS 2 22}{%
+Choose parameters that make the data most probable.}
+\likelihoodest = \argmax_{\theta}P(\td \g \theta)
+\end{sgequationdesc}
+
+\begin{sgequationdesc}{map}{Maximum a Posteriori Estimate (MAP)}{Slides PS 2 37}{%
+Somewhat Bayesian (``point + prior'').
+\begin{packedlist}
+\item Choose a likelihood function $\likelihoodfn$
+\item Choose a prior parameter dist $P(\theta)$
+\item Use MAP.
+\item Make predictions using MAP: $P(\td' \g \mapfn)$
+\end{packedlist}}
+\mapfn = \argmax_{\theta}P(\td \g \theta) P(\theta)
+\end{sgequationdesc}
+
+\begin{ddexample}{Likelihood and MLE Example}{Office Hours}
+\noindent
+\begin{math}
+P(\theta) = \left\{
+\begin{array}{l l}
+\frac{1}{3} & \theta = \theta_1\\
+\frac{1}{3} & \theta = \theta_2\\
+\frac{1}{3} & \theta = \theta_3
+\end{array} \right.\\
+\end{math}
+
+\noindent
+\begin{math}
+\td = \{ H, H \} \;\; \text{(two heads)}\\
+\theta_1 = .5\\
+\theta_2 = .3\\
+\theta_3 = .8\\
+\likelihood_1 =.5 \cdot .5 = .25
+\end{math}
+
+\vspace{.2cm}
+
+\noindent
+Probability of two heads (H H) using likelihood and MAP estimates:\\
+\begin{tabular}{c|c|l}
+$N$ & $\likelihood_N$ & $\likelihoodfn P(\theta)$ (MAP)\\
+\hline
+$1$ & $.5 \cdot .5 = .25$ & $.25 \cdot \frac{1}{3} = .083$\\
+$2$ & $.3 \cdot .3 = .09$ & $.09 \cdot \frac{1}{3} = .03$\\
+$3$ & $.8 \cdot .8 = .64$ & $.64 \cdot \frac{1}{3} = .213$\\
+\end{tabular}
+
+\vspace{.2cm}
+\noindent
+Parameter $\theta_3$ wins with an MLE $\likelihoodest = .64$.\\
+Parameter $\theta_3$ wins with an MAP $\mapfn = .213$.
+
+\vspace{.2cm}
+
+\noindent
+Bayes:\\
+\begin{displaymath}
+\begin{gathered}
+P(\theta \g \td) = \frac{P(\td \g \theta)P(\theta)}{P(\td)}=
+\frac{P(\td \g \theta)P(\theta)}{\sum_{\theta'}P(\td \g \theta')P(\theta')}=\\
+P(H \g \td) = \sum_{\theta'\in \{\theta_1 \theta_2, \theta_3\}}P(\theta' \g \td)P(H \g \td)=\\
+\frac
+{.083 \cdot .5 + .03 \cdot .3 + .213 \cdot .8}
+{.083 + .03 + .213}=.67
+\end{gathered}
+\end{displaymath}
+
+\end{ddexample}
+
+\begin{sgequationpagedesc}{bincof}{Binomial Coefficient}{34}{%
+Binomial coefficients are a family of positive integers that occur as
+coefficients in the binomial theorem.}
+{n \choose k} = \frac{n!}{k!(n - k)!}
+\end{sgequationpagedesc}
+
+\begin{sgequationpagedesc}{multdist}{Multinomial Distribution}{35}{%
+Models the outcomes of tossing a $K$-sided die.  Let $\textbf{x} = (x_1 \dots
+x_K)$ be a randome vector, where $x_j$ is the number of times side $j$ of the
+die occurs.}
+\textrm{Mu}(\textbf{x} \g n, \theta) \df
+{n \choose {x_1 \dots x_K}} \prod_{j=1}^K\theta_{j}^{x_j}\\
+\textrm{$\theta_j$ is the probability that side $j$ shows up, and}\\
+{n \choose {x_1 \dots x_K}} \df \frac{n!}{x_1!x_2! \dots x_K!}
+\end{sgequationpagedesc}
+
+\concept{Poisson/Empirical Distribution}{37}
+
+\begin{sgequationpage}{gaussian-dist}{Gaussian (Normal) Distribution}{38}
+P(x) \df \Nu(x \g \mu, \sigma^2) =
+\frac{1}{{\sigma \sqrt {2\pi } }}e^{{{ - \left( {x - \mu } \right)^2 } \mathord{\left/ {\vphantom {{ - \left( {x - \mu } \right)^2 } {2\sigma ^2 }}} \right. \kern-\nulldelimiterspace} {2\sigma ^2 }}}
+\end{sgequationpage}
+
+\begin{sgequationpagedesc}{beta-dist}{Beta Distribution}{42}{%
+Where $\Gamma$ is the conjugate prior.}
+\textrm{Beta}(x \g a, b) = \frac{1}{B(a,b)^{x^{a-1}(1 - x)^{b - 1}}}\\
+B \df \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}
+\end{sgequationpagedesc}
+
+\begin{sgequation}{product-rule}{Product Rule}{ES Class}
+P(a \a b) = P(a \g b) P(b) \Leftrightarrow\\
+P(X = x, Y = y) = P(X = x \g Y = y) \cdot P(Y = y)
+\end{sgequation}
+
+\begin{sgequationpage}{bayes-rule}{Bayes Rule}{29}
+P(X = x \g Y = y) = \frac{P(X = x, Y = y)}{P(Y = y)} =
+\frac{P(X = x)P(Y = y \g X = x)}{\sum_{x'}P(X = x')P(Y = y \g X = x')}
+\end{sgequationpage}
+
+\end{document}
