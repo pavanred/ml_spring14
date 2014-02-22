@@ -31,21 +31,6 @@
 \int(x - \mu)^2 f(x)dx = \int x^2 f(x)dx - \mu^2
 \end{sgequationsite}
 
-
-\begin{sgequationpagedesc}{bindist}{Bernoulli/Binomial Distribution}{34}{%
-Models outcomes of coin tosses.  Coin toss $n$ times with $X \in \{0, \dots,
-n\}$.  Probability $\theta$ is the parameter of, for example, fairness of the
-coin.
-
-\begin{packedlist}
-  \item Expected number of ``heads'' outcomes in 10 flips.
-  \item Given 10 flips what is the probability of at least 8 being ``heads''?
-  \item Given 3 heads, 2 tails, what is the estimate of $\theta$?
-  \item How far will this estimate be from true $\theta^*$?
-\end{packedlist}}
-\textrm{Bin}(k \g n, \theta) \df {n\choose k} \theta^{k}(1 - \theta)^{n - k}
-\end{sgequationpagedesc}
-
 \begin{sgequationpagedesc}{likelihood-book}{Likelihood Per Book}{67}{%
 Size principle/Occam's razor: model favors simplest hypothesis consistent with
 data.}
@@ -127,13 +112,30 @@ P(H \g \td) = \sum_{\theta'\in \{\theta_1 \theta_2, \theta_3\}}P(\theta' \g \td)
 
 \end{ddexample}
 
+\begin{sgequationpagedesc}{bindist}{Bernoulli/Binomial Distribution}{34}{%
+Models outcomes of coin tosses.  Coin toss $n$ times with $X \in \{0, \dots,
+n\}$.  Probability $\theta$ is the parameter of, for example, fairness of the
+coin.
+
+\begin{packedlist}
+  \item Expected number of ``heads'' outcomes in 10 flips.
+  \item Given 10 flips what is the probability of at least 8 being ``heads''?
+  \item Given 3 heads, 2 tails, what is the estimate of $\theta$?
+  \item How far will this estimate be from true $\theta^*$?
+\end{packedlist}
+
+\noindent
+Bernoulli is the case where $n = 1$ (that is, one coin toss).}
+\textrm{Bin}(k \g n, \theta) \df {n\choose k} \theta^{k}(1 - \theta)^{n - k}
+\end{sgequationpagedesc}
+
 \begin{sgequationpagedesc}{bincof}{Binomial Coefficient}{34}{%
 Binomial coefficients are a family of positive integers that occur as
 coefficients in the binomial theorem.}
 {n \choose k} = \frac{n!}{k!(n - k)!}
 \end{sgequationpagedesc}
 
-\begin{sgequationpagedesc}{multdist}{Multinomial Distribution}{35}{%
+\begin{sgequationpagedesc}{multdist}{Multinomial/Multinouli Distribution}{35}{%
 Models the outcomes of tossing a $K$-sided die.  Let $\textbf{x} = (x_1 \dots
 x_K)$ be a randome vector, where $x_j$ is the number of times side $j$ of the
 die occurs.}
