@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+% file admin
+\newcommand{\bibfile}{GroupProject}
+
+%\newcommand{\theauthor}{Pavan Reddy <preddy4@uic.edu>, Shreya Ghosh <sghosh21@uic.edu>, Nianzu Ma <nma4@uic.edu>, Paul Landes <plandes2@uic.edu>}
+\newcommand{\theauthor}{Pavan Reddy, Shreya Ghosh, Nianzu Ma, Paul Landes}
+\newcommand{\doctitle}{Machine Learning Project Proposal 2014 Spring}
+\newcommand{\doctype}{Capital BikeShare Data Set Analysis and Prediction}
+\newcommand{\theuniversity}{University of Illinois at Chicago}
+
+\newcommand{\ci}[1]{\cite{#1}}
+
+\usepackage{zenacademic}
+
+\author{\theauthor}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Bike sharing systems have made renting bikes efficient and quick with
+memberships, multiple bike locations and easy rental and return
+process. Through these systems, a user is able to easily rent a bike from a
+particular station and return back at another station. Currently, there are
+over 500 bike-sharing programs around the world which is composed of over 500
+thousands bicycles\ci{ucibikeshare}.
+\end{abstract}
+
+
+\ddsec{intro}{Introduction}
+
+The University of California at Irvine, data set has features like date,
+weather, if the day is a weekday or holiday, count of bikes rented, etc. These
+features of the data make it apt for research like finding patterns between
+different features and number of bikes rented.
+
+In this project we will analyze operational data from the bike-sharing systems,
+which was originally generated from Capital Bike Share and derive bike activity
+patterns. The problem addressed in this project is finding how many bikes will
+be rented based on features given in the dataset. We will use concepts like
+regression, kernel function and classification algorithms from Machine Learning
+to generate these patterns and then compare their accuracies.
+
+\ddsubsec{team}{Team}
+{\bf Pavan Reddy}
+CS master student, has experience of machine learning algorithm application and
+have research in this domain.
+
+\noindent
+{\bf Paul Landes} CS master student, programming expert, has experience of AI
+and data visualization.
+
+\noindent
+{\bf Shreya Ghosh} CS Ph.D. candidate, has experience of data mining and NLP.
+
+\noindent
+{\bf Nianzu Ma} CS master student, has experience of data mining and NLP.
+
+
+\ddsec{approach}{Approach}
+
+The Bike Sharing Dataset provides data about the counts of total rental bikes
+between years 2011 and 2012 in Capital bikeshare system. The data includes
+information about the bike usage of both casual and registered users available
+in two resolutions on the time scale; hourly and daily count of rental
+bikes. The data also includes the corresponding weather, seasonal, holiday,
+time information. The data set is a collation of data from multiple
+sources--Capital Bike Sharing system data\ci{capbikeshare}, Weather
+information\ci{freemeteo} and holiday schedule\ci{holiday}.
+
+We propose to use this data set to predict the counts of rental bikes based on
+weather, seasonal, holidays, temperature, temperature including the wind chill,
+wind speeds,
+
+humidity, weather (rain, snow etc.), days (week days, weekends), time of the
+day and month of the year. We also propose to predict the usage of rental bikes
+for casual users and registered users. And, we propose to predict the usage of
+the rental bikes daily and hourly. These predictions can play an important role
+in traffic, environmental and health issues management.
+
+Because of the property of the data, we will treat this problem as both
+classification problem and regression problem.
+
+Our approach will make use of supervised Machine Learning methods
+extensively. The first step is data pre-processing. We first sanitize the
+available data, for example handle missing data, if any. Then, the goal is to
+identify the best parameters for the regression function. After choosing the
+best parameters we build regression models using machine learning algorithms,
+Linear Regression Analysis, Support Vector Machines\ci{svm}. We propose to
+improve the results as much as possible by using various methods such as
+regularization to minimize overfitting the model, which involves estimating the
+best regularization parameters. We propose to use ensemble learning methods
+such as bootstrap aggregating (bagging), boosting to improve our results.
+
+We also propose to transform the bike rental data to discrete classes because
+the value of class attribute changes dramatically of each record. For example,
+count of total rental bikes between 0 and 50, and use supervised Machine
+Learning classification algorithms such as decision tree, Naive Bayes and
+Logistic Regression\ci{logreg}. After best feature selection and building a
+classification model, we try to improve our model by using a few methods that
+are described earlier. We propose to then use the classification model to
+predict the number of rental bikes usage hourly and daily and compare the
+results we obtained with classification and regression methods.
+
+Java and the
+Weka\footnote{\href{http://www.cs.waikato.ac.nz/ml/weka/}{http://www.cs.waikato.ac.nz/ml/weka/}}
+technologies for the implementation of the project.
+
+\ddsec{eval}{Model Evaluation}
+
+Since the total record is more than 17,000, it is big enough for training a
+model. So sample a set of training example from hours.csv for training and the
+rest of testing. The data will be as 80\% training set and 20\% test set. To
+further test the robustness of the classifier, 10-fold cross-validation will be
+used for evaluation. Root Mean Squared Error and Mean Absolute Error would be
+used as measure for evaluation of regression model\ci{modreg}. Accuracy,
+precision, recall and F-score will be used as the measurement for the
+evaluation of the classifier.\ci{liu2007web}
+
+\bibliography{\bibfile}
+\bibliographystyle{plain}
+
+\end{document}
