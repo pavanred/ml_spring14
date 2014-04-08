@@ -1,7 +1,6 @@
-data <- read.csv(file='/media/Data1/uic/courses/machine_learning/project/src/day.csv', header=T, sep=',')
+data <- read.csv(file='/Users/landes/view/uic/2014/pavan/group-project/data/day.csv', header=T, sep=',')
 #data
-model <- lm(cnt ~ season + yr + mnth + holiday + weekday + workingday +
-weathersit + temp + atemp + hum + windspeed, data)
+model <- lm(cnt ~ season + yr + mnth + holiday + weekday + workingday + weathersit + temp + atemp + hum + windspeed, data)
 #summary(model)
 
 #coefficients(model) # model coefficients
@@ -13,8 +12,7 @@ weathersit + temp + atemp + hum + windspeed, data)
 #influence(model) # regression diagnostics
 
 
-plot(data$cnt, resid(model), ylab="Residuals", xlab="Bike Rentals",
-main="Residuals vs Bike Rental Counts")
+plot(data$cnt, resid(model), ylab="Residuals", xlab="Bike Rentals", main="Residuals vs Bike Rental Counts")
 abline(0,0)
 
 #Diagnostics - heteroscedasticity, normality, and influential observerations.

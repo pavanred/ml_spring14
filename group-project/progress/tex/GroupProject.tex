@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+% file admin
+\newcommand{\bibfile}{GroupProject}
+
+%\newcommand{\theauthor}{Pavan Reddy <preddy4@uic.edu>, Shreya Ghosh <sghosh21@uic.edu>, Nianzu Ma <nma4@uic.edu>, Paul Landes <plandes2@uic.edu>}
+\newcommand{\theauthor}{Pavan Reddy, Shreya Ghosh, Nianzu Ma, Paul Landes}
+\newcommand{\doctitle}{Machine Learning Progress Report 2014 Spring}
+\newcommand{\doctype}{Capital BikeShare Data Set Analysis and Prediction}
+\newcommand{\theuniversity}{University of Illinois at Chicago}
+
+\newcommand{\ci}[1]{\cite{#1}}
+\newcommand{\figwidth}{4in}
+
+\usepackage{zenacademic}
+
+\author{\theauthor}
+
+\begin{document}
+
+\maketitle
+
+\ddsec{intro}{Detailed Objectives}
+
+The weather condition in our data set has a lot of impact on the usage of
+bicycling. Specifically, usage can be affected by colder weather,
+precipitation, and excessive heat. Our research will analyze the effect of
+weather, working day, holidays and other factors of bike rentals. We are
+currently building statistical models for this and estimating the number of
+both kinds of users (registered and casual users).
+
+
+\ddsec{progress}{Progress}
+
+Our approach includes using the bike rental data to build a multiple linear
+regression model for both daily and hourly data. We built multiple regression
+models based on different feature selections.  We performed basic data analysis
+to help us choose the features for the regression model. The weather in
+Washington DC includes all variations and has an impact on the number of bike
+rentals for example the weather situation such as rain has a direct consequence
+on the total number of bike rentals. The impact of seasons also affects the
+bike rentals. We also see good correlation of the of features such as
+temperature and ``feels like'' temperature with the total number of bike
+rentals. Based on such data analysis we built multiple linear regression model,
+which takes the general form:
+
+\begin{equation}
+y_i = \beta_0 + \beta_1x_{i1} + \cdots + \beta_px_{ip} + \varepsilon_i = {\mathbf
+x}_i^{T}\beta + \varepsilon_i, \; \; \; i = 1, \ldots, n
+\end{equation}
+
+where $p$ is the number of variables.  Examples of values of $x$ are weather
+(i.e. rain), temperature, number of rentals, etc.  The $\beta$ values are the
+learned parameters.
+
+We built similar regression models using different feature selections for the
+daily dataset.
+
+\ddfigure{\figwidth}{predicted_vs_actuals}{Predicted Values vs. Actual Values}
+
+We performed 3-fold cross validation to evaluate our model. We also measured
+the residuals to estimate the error in the model.
+
+\ddfigure{\figwidth}{residuals_vs_fitted}{Residuals vs. Fitted Values}
+
+%\ddfigure{\textwidth}{cross_validation}{Cross Fold Validation}
+
+We built similar regression models for the hourly dataset but we obtained
+partial results, we are still working on improving our model based on different
+feature selections.
+
+We used R\ci{rproj} to build the regression models and to generate the plots
+and we used Java for basic data processing.
+
+Action items executed:
+
+\begin{packedlist}
+\item Multiple linear regression for hourly and daily bike rental data. 
+\item Different feature selections for regression model of daily data. (Plot)
+\item Partial results for hourly bike rental data regression model
+\item 3-fold cross validation for bike rentals for daily data regression model
+\item Evaluation based on residuals (Residuals vs fitted plot)
+\item Implementaion details - R, java for data processing
+\end{packedlist}
+
+
+\ddsec{remaining}{Remaining Work}
+
+We are currently trying to improve the regression models by using the following
+methods - Experiment and discover better feature selection Addition of dummy
+variables e.g. replacing the `weather situation' variable by 4 boolean
+variables `clear', `rain', `snow', `cloudy' Experiment with squares of
+significant variables in the regression.  Regularization
+
+We are also going to identify the impact of weather conditions, time of day,
+day of week, holidays etc. on bike rentals by registered users and casual
+users.
+
+We are going to process the data to discretize the total number of bike rentals
+and employ classification techniques. We plan to use classification methods
+such as Naive Bayes classifier and Logistic Regression and compare the results
+of regression and classification.
+
+\ddsec{summary}{Summary}
+
+\begin{packedlist}
+\item Discretize bike rental data 
+\item Use classification models and compare results with regression
+\item Experiment and improve regression / classification models based on various feature selections.
+\item Process data - add dummy variables (weather situation variable replaced by rainy, fog, snow, sunny variables)
+\item Employ regularization
+\item Impact on registered users and casual users.
+\end{packedlist}
+
+\bibliography{\bibfile}
+\bibliographystyle{plain}
+
+\end{document}
