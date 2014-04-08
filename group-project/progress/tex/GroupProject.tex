@@ -56,14 +56,18 @@ learned parameters.
 We built similar regression models using different feature selections for the
 daily dataset.
 
-\ddfigure{\figwidth}{predicted_vs_actuals}{Predicted Values vs. Actual Values}
+\ddfigure{\figwidth}{temp_counts_cor}{Temperature Bike Counts Correlation}
+
+%\ddfigure{\figwidth}{predicted_vs_actuals}{Predicted Values vs. Actual Values}
 
 We performed 3-fold cross validation to evaluate our model. We also measured
 the residuals to estimate the error in the model.
 
 \ddfigure{\figwidth}{residuals_vs_fitted}{Residuals vs. Fitted Values}
 
-%\ddfigure{\textwidth}{cross_validation}{Cross Fold Validation}
+\ddFigref{cross_validation} shows incorrect assumptions about variable dependence.
+
+\ddfigure{\figwidth}{cross_validation}{Cross Fold Validation}
 
 We built similar regression models for the hourly dataset but we obtained
 partial results, we are still working on improving our model based on different

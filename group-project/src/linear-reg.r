@@ -25,8 +25,15 @@ abline(0,0)
 model_weather <- lm(cnt ~ weathersit + temp , data)
 summary(model_weather)
 plot(data$cnt, resid(model), ylab="Residuals", xlab="Bike Rentals", main="Residuals vs Bike Rental")
-abline(0,0)
+abline(0,0,col='red')
 
 plot(data$cnt~as.Date(data$dteday),ylab="counts",xlab="Date",type='l', col='blue')
 lines(predict(model)~as.Date(data$dteday),col='red')
 lines(predict(model_weather)~as.Date(data$dteday),col='green')
+
+
+plot(data$cnt~as.Date(data$dteday),type='l', col='blue',ylab='Total Bike Rentals',xlab='Correlation of Temp and Counts = 0.631')
+par(new = TRUE)
+plot(data$atemp~as.Date(data$dteday),ylab="",axes=FALSE,xlab="",type='l', col='red')
+mtext("Temperature", side=4, line=1)
+legend('topleft', c('Temp','Counts') , lty=1, col=c('red', 'blue'), bty='n', cex=.75)

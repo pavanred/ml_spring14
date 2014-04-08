@@ -20,9 +20,10 @@ VECPATH=	$(realpath ../vec)
 # file deps
 DBPDFS=		$(notdir $(wildcard $(DBPATH)/*.pdf))
 VECEPS=		$(notdir $(wildcard $(VECPATH)/*.eps))
+VECPDF=		$(notdir $(wildcard $(VECPATH)/*.pdf))
 GRAFFLES=	$(wildcard $(GRAFFLEPATH)/*.graffle)
 SEQUENCES=	$(notdir $(wildcard $(SEQPATH)/*.sdx))
-DIAGRAMS=	$(SEQUENCES:.sdx=.eps) $(DBPDFS:.pdf=.eps) $(VECEPS)
+DIAGRAMS=	$(SEQUENCES:.sdx=.eps) $(DBPDFS:.pdf=.eps) $(VECEPS) $(VECPDF)
 
 # record keeping
 BASEDIR=	$(realpath .)
@@ -45,6 +46,9 @@ OBJS_TO_DEL+=	$(TEX).aux $(TEX).log *~ $(TEX).dvi $(TEX).ps \
 
 %.eps:		$(VECPATH)/%.eps
 		cp $(VECPATH)/$*.eps $(CURDIR)/$*.eps
+
+%.pdf:		$(VECPATH)/%.pdf
+		cp $(VECPATH)/$*.pdf $(CURDIR)/$*.pdf
 
 $(GRAFFINDF):	$(GRAFFLES) $(DIAGRAMS)
 		echo $(GRAFFLES)
