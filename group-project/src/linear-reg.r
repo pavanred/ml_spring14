@@ -20,12 +20,11 @@ abline(0,0)
 #plot(model)
 
 #data$res <- resid(model)
-#boxplot(data$cnt~data$res,data=data, main="Residuals vs Fitted
-#Boxplot", xlab="Residuals", ylab="Bike Rental Counts")
+#boxplot(data$cnt~data$res,data=data, main="Residuals vs Fitted Boxplot", xlab="Residuals", ylab="Bike Rental Counts")
 
 model_weather <- lm(cnt ~ weathersit + temp , data)
 summary(model_weather)
-plot(data$cnt, resid(model_weather), ylab="Residuals", xlab="Bike Rentals", main="Residuals vs Bike Rental (weather + temp)")
+plot(data$cnt, resid(model), ylab="Residuals", xlab="Bike Rentals", main="Residuals vs Bike Rental")
 abline(0,0)
 
 plot(data$cnt~as.Date(data$dteday),ylab="counts",xlab="Date",type='l', col='blue')
