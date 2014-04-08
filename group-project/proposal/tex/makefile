@@ -2,7 +2,7 @@
 # Created: 01/27/2011
 
 # location of the the tex setup (i.e. make file libs, sty files etc) library directory
-TEXLIBDIR=	../res
+TEXLIBDIR=	../../../tex
 
 # per make file vars
 TEX=		GroupProject
