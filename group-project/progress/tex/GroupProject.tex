@@ -5,8 +5,8 @@
 
 %\newcommand{\theauthor}{Pavan Reddy <preddy4@uic.edu>, Shreya Ghosh <sghosh21@uic.edu>, Nianzu Ma <nma4@uic.edu>, Paul Landes <plandes2@uic.edu>}
 \newcommand{\theauthor}{Pavan Reddy, Shreya Ghosh, Nianzu Ma, Paul Landes}
-\newcommand{\doctitle}{Machine Learning Progress Report 2014 Spring}
-\newcommand{\doctype}{Capital BikeShare Data Set Analysis and Prediction}
+\newcommand{\doctitle}{CS 491 - Machine Learning - Spring 2014}
+\newcommand{\doctype}{Capital BikeShare Data Analysis and Prediction Progress Report}
 \newcommand{\theuniversity}{University of Illinois at Chicago}
 
 \newcommand{\ci}[1]{\cite{#1}}
@@ -22,12 +22,12 @@
 
 \ddsec{intro}{Detailed Objectives}
 
-The weather condition in our data set has a lot of impact on the usage of
+Bike rentals are affected by various factors. The weather condition in our data set has a lot of impact on the usage of
 bicycling. Specifically, usage can be affected by colder weather,
 precipitation, and excessive heat. Our research will analyze the effect of
 weather, working day, holidays and other factors of bike rentals. We are
-currently building statistical models for this and estimating the number of
-both kinds of users (registered and casual users).
+currently building machine learning models to predict the number of
+bike rental users, both registered and casual users, based on factors such as weather conditions, holidays etc.
 
 
 \ddsec{progress}{Progress}
@@ -73,9 +73,9 @@ partial results, we are still working on improving our model based on different
 feature selections.
 
 We used R\ci{rproj} to build the regression models and to generate the plots
-and we used Java for basic data processing.
+and we used Java for basic data processing.\newline
 
-Action items executed:
+\textbf{Action items executed:}
 
 \begin{packedlist}
 \item Multiple linear regression for hourly and daily bike rental data. 
@@ -90,14 +90,18 @@ Action items executed:
 \ddsec{remaining}{Remaining Work}
 
 We are currently trying to improve the regression models by using the following
-methods - Experiment and discover better feature selection Addition of dummy
-variables e.g. replacing the `weather situation' variable by 4 boolean
-variables `clear', `rain', `snow', `cloudy' Experiment with squares of
-significant variables in the regression.  Regularization
+methods - 
+\begin{packedlist}
+\item Experiment and discover better feature selection 
+\item Addition of dummy variables e.g. replacing the `weather situation' variable by 4 boolean
+variables `clear', `rain', `snow', `cloudy' 
+\item Experiment with non linear regression e.g. squares of significant variables in the regression.  
+\item Regularization
+\end{packedlist}
 
 We are also going to identify the impact of weather conditions, time of day,
 day of week, holidays etc. on bike rentals by registered users and casual
-users.
+users.\newline
 
 We are going to process the data to discretize the total number of bike rentals
 and employ classification techniques. We plan to use classification methods
