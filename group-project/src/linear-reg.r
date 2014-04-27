@@ -1,4 +1,5 @@
-data <- read.csv(file='/Users/landes/view/uic/2014/pavan/group-project/data/day.csv', header=T, sep=',')
+data <- read.csv(file='day.csv', header=T, sep=',')
+
 #data
 model <- lm(cnt ~ season + yr + mnth + holiday + weekday + workingday + weathersit + temp + atemp + hum + windspeed, data)
 #summary(model)
