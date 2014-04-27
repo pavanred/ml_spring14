@@ -1,0 +1,30 @@
+options("width"=300)
+
+byhr <- read.csv(file='../data/hour.csv', header=T, sep=',')
+byhr$dteday <- as.Date(byhr$dteday)
+#byhr$season <- factor(byhr$season)
+byhr$season <- as.integer(byhr$season)
+byhr$clear_weather <- ifelse(byhr$weathersit ==1, 1, 0)
+byhr$cloudy_weather <- ifelse(byhr$weathersit ==2, 1, 0)
+byhr$lightprecp_weather <- ifelse(byhr$weathersit ==3, 1, 0)
+byhr$heavyprecp_weather <- ifelse(byhr$weathersit ==4, 1, 0)
+byhr$during_work <- ifelse(byhr$hr > 8 & byhr$hr < 18, 1, 0)
+names(byhr)
+
+cormat <- data.frame(byhr$cnt, byhr$registered, byhr$casual, byhr$clear_weather, byhr$cloudy_weather, byhr$windspeed, byhr$lightprecp_weather, byhr$heavyprecp_weather, byhr$holiday, byhr$workingday, byhr$temp, byhr$season, byhr$hr, byhr$during_work)
+round(cor(cormat),2)
+View(byhr)
+
+#plot(byhr$cnt ~ byhr$hr)
+byhrlm <- lm(byhr$cnt ~ byhr$hr, byhr)
+plot(byhr$hr, byhr$cnt)
+plot(byhrlm)
+abline(byhrlm)
+
+
+byhr <- read.csv(file='../data/hour_dummied.csv', header=T, sep=',')
+View(byhr)
+names(byhr)
+cormat <- data.frame(byhr$season1,byhr$season2,byhr$season3,byhr$season4,byhr$year,byhr$month1,byhr$month2,byhr$month3,byhr$month4,byhr$month5,byhr$month6,byhr$month7,byhr$month8,byhr$month9,byhr$month10,byhr$month11,byhr$month12,byhr$hour0,byhr$hour1,byhr$hour2,byhr$hour3,byhr$hour4,byhr$hour5,byhr$hour6,byhr$hour7,byhr$hour8,byhr$hour9,byhr$hour10,byhr$hour11,byhr$hour12,byhr$hour13,byhr$hour14,byhr$hour15,byhr$hour16,byhr$hour17,byhr$hour18,byhr$hour19,byhr$hour20,byhr$hour21,byhr$hour22,byhr$hour23,byhr$holiday,byhr$weekday0,byhr$weekday1,byhr$weekday2,byhr$weekday3,byhr$weekday4,byhr$weekday5,byhr$weekday6,byhr$workingday,byhr$weathersit1,byhr$weathersit2,byhr$weathersit3,byhr$weathersit4,byhr$temp,byhr$atemp,byhr$humidity,byhr$windspeed,byhr$casual,byhr$register,byhr$count,byhr$casualClass,byhr$registerClass,byhr$countClass)
+cormat <-  data.frame(byhr[3:61])
+round(cor(cormat),2)
