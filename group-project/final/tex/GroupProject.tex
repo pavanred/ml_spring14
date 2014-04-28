@@ -254,13 +254,47 @@ be used to build regression models.  We used SVM to build regression models for
 the hourly dataset. We tuned the SVM models with a multitude of parameters such
 as kernel functions, degree of the polynomial, constant for regularization term
 which intuitively is a parameter that helps mitigate the effects of
-overfitting, γ (gamma) the parameter that defines how far a training example's
+overfitting, $\gamma$ the parameter that defines how far a training example's
 influence reaches etc. For kernel functions we experimented with SVM models
 that used different kernel functions such as linear, polynomial, radial and
 sigmoid functions.
 
-		
+
 \ddsubsec{reg-class}{Classification}
+
+For bike sharing companies, the cost of arranging bikes to different station to
+meet customers’ needs is a big part of the total operation cost. The prediction
+given by regression model could provide good reference for such
+companies. However, there are some extreme data instances that cannot be solved
+by regression model prediction. These case will make regression approach less
+reliable and will mislead companies decisions for arranging bikes for
+stations. If in some cases, the number of bike needed is extreme high, but
+regression model cannot give such prediction, then it would be a huge loss of
+income of the company and also harm the customers benefit.  A reliable
+classification approach is need to detect such extreme cases and let companies
+to prepare for such cases.
+
+We will discretized bike count as ``low'' and ``high'' to show the extreme
+case. But for different companies, the ability of the amount of bikes to
+prepare for stations at each hour is quite different. It means the definition
+of ``low'' and ``high'' of each bike sharing company is different. We will set
+the boundary of ``high'' as 500, 600, 700, 800 respectively and set the
+boundary of ``low'' as 100 to analyze the performance of our classification
+model.
+
+We used J48 decision tree, naive bayes, SVM and logistic regression models to
+classify hourly bike sharing data. All these models were used with combination
+of multiple features trying to analyze how these features affected prediction
+outcome. Using the correlation matrix we decided which combination of features
+to be used in classification models. In earlier trials J48 decision tree made
+better predictions than logistic regression. After coming across a set of
+features that gave us optimum outcome we tried tweaking classification model
+arguments. For J48 decision tree we tried changing confidence factor, value of
+seed and minimum number of object, but since the accuracy was already high
+making these changes to argument did not cause any significant change to the
+outcome. Similar results where seen with logistic regression model. J48 and SVM
+showed better results, but when we changed threshold of classes J48 produced
+better results.
 
 
 \ddsubsec{eval}{Evaluation}
@@ -421,7 +455,7 @@ The accuracy of the decision tree classification was 99.536\%
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
 & 0.998 & 0.047 & 0.998 & 0.998 & 0.998 & low \\ \hline
 & 0.953 & 0.002 & 0.956 & 0.953 & 0.955 & high \\ \hline
-Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 \\ \hline
+Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 & \\ \hline
 
 \end{ddbasictable}
 
@@ -493,8 +527,8 @@ transformations from nominal to numerical/boolean variables, generation of new
 variables, discretizing the variables.
 
 We used Java and Weka API for building and evaluating classification models. We
-used Weka API for building J48 Decision trees, Logistic Regression and Support
-Vector Machines (SVM).
+used Weka API for building J48 Decision trees, Naive Bayes , Logistic
+Regression and Support Vector Machines (SVM).
 
 We implemented the regression models using R such as Multivariate Linear
 Regression and Support Vector Machines including methods such as regularization
@@ -508,9 +542,13 @@ After comparing results from regression and classification models, we observed
 few relations between features and nominal class. As discussed earlier
 windspeed does not affect prediction models, since Washington has average
 windspeed throughout the year. This assumption was later proved by correlation
-table. During step-wise regression the model removed “winter” since it did not
+table. During step-wise regression the model removed ``winter'' since it did not
 have much effect on bike count class. This behavior was observed by
 classification models as well.
+
+We used Java and Weka API for building and evaluating classification models. We
+used Weka API for building J48 Decision trees, Logistic Regression and Support
+Vector Machines (SVM).
 
 
 \ddsec{future-speak}{Future Work}
