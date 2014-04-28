@@ -5,7 +5,7 @@
 
 %\newcommand{\theauthor}{Pavan Reddy <preddy4@uic.edu>, Shreya Ghosh <sghosh21@uic.edu>, Nianzu Ma <nma4@uic.edu>, Paul Landes <plandes2@uic.edu>}
 \newcommand{\theauthor}{Pavan Reddy, Shreya Ghosh, Nianzu Ma, Paul Landes}
-\newcommand{\doctitle}{Machine Learning Project Report 2014 Spring}
+\newcommand{\doctitle}{Machine Learning Final Report Spring 2014}
 \newcommand{\doctype}{Capital BikeShare Data Set Analysis and Prediction}
 \newcommand{\theuniversity}{University of Illinois at Chicago}
 
@@ -14,6 +14,7 @@
 \newcommand{\figwidth}{5in}
 
 \usepackage{zenacademic}
+\date{}
 
 \author{\theauthor}
 
@@ -22,6 +23,7 @@
 \maketitle
 \thispagestyle{empty}
 %\newpage
+%\vspace{-1cm}
 \tableofcontents
 
 \ddsec{intro}{Introduction}
@@ -66,7 +68,7 @@ years (2011 - 2012).
 %Washington observes average windspeed throughout the year, we choose to ignore
 %windspeed as a feature in few analysis models.
 
-\ddsubsubsec{data-def}{Data Definition} 
+\ddsubsec{data-def}{Data Definition} 
 
 The compiled set of parameters features used follow in table \ddtabref{params}.
 
@@ -127,15 +129,15 @@ function for the regression models.
 
 \begin{ddbasictable}{feat-cor-mat}{Features Correlation Matrix}{|l|l|l|l|l|l|l|l|l|}
 \hline
-& workingday & temp & atemp & hum & windspeed & casual & registered & cnt \\ \hline
-workingday & 1.00 & 0.06 & 0.05 & 0.02 & -0.01 & -0.30 & 0.13 & 0.03 \\ \hline
-temp & 0.06 & 1.00 & 0.99 & -0.07 & -0.02 & 0.46 & 0.34 & 0.40 \\ \hline
-atemp & 0.05 & 0.99 & 1.00 & -0.05 & -0.06 & 0.45 & 0.33 & 0.40 \\ \hline
-hum & 0.02 & -0.07 & -0.05 & 1.00 & -0.29 & -0.35 & -0.27 & -0.32 \\ \hline
-windspeed & -0.01 & -0.02 & -0.06 & -0.29 & 1.00 & 0.09 & 0.08 & 0.09 \\ \hline
-casual & -0.30 & 0.46 & 0.45 & -0.35 & 0.09 & 1.00 & 0.51 & 0.69 \\ \hline
-registered & 0.13 & 0.34 & 0.33 & -0.27 & 0.08 & 0.51 & 1.00 & 0.97 \\ \hline
-cnt & 0.03 & 0.40 & 0.40 & -0.32 & 0.09 & 0.69 & 0.97 & 1.00 \\ \hline
+& \bf{workingday} & \bf{temp} & \bf{atemp} & \bf{hum} & \bf{windspeed} & \bf{cnt} \\ \hline
+\bf{workingday} & 1.00 & 0.06 & 0.05 & 0.02 & -0.01 & 0.03 \\ \hline
+\bf{temp} & 0.06 & 1.00 & 0.99 & -0.07 & -0.02 & 0.40 \\ \hline
+\bf{atemp} & 0.05 & 0.99 & 1.00 & -0.05 & -0.06 & 0.40 \\ \hline
+\bf{hum} & 0.02 & -0.07 & -0.05 & 1.00 & -0.29 & -0.32 \\ \hline
+\bf{windspeed} & -0.01 & -0.02 & -0.06 & -0.29 & 1.00 & 0.09 \\ \hline
+\bf{casual} & -0.30 & 0.46 & 0.45 & -0.35 & 0.09 & 0.69 \\ \hline
+\bf{registered} & 0.13 & 0.34 & 0.33 & -0.27 & 0.08 & 0.97 \\ \hline
+\bf{cnt} & 0.03 & 0.40 & 0.40 & -0.32 & 0.09 & 1.00 \\ \hline
 \end{ddbasictable}
 
 Interpretation of \ddtabref{feat-cor-mat} are given below:
@@ -236,7 +238,6 @@ influence reaches etc. For kernel functions we experimented with SVM models
 that used different kernel functions such as linear, polynomial, radial and
 sigmoid functions.
 
-%% SVM RESULTS HERE
 		
 \ddsubsec{reg-class}{Classification}
 
@@ -292,7 +293,17 @@ table.
 
 \ddsec{results}{Experimental Results}
 
-SVM table stats here <paul>
+SVM yielded interesting results.
+
+\begin{ddbasictable}{svm-results}{SVM Results}{|l|l|l|l|l|l|}
+\hline
+{\bf Cost} & {\bf Gamma} & {\bf Kernel} & {\bf Degree} & {\bf Vector Count} & {\bf RSME} \\ \hline
+1000 & 0.0001 & radial & N/A & 8724 & 139.6982 \\ \hline
+10 & 0.01 & polynomial & 2 & 8807 & 133.0355 \\ \hline
+10 & 0.01 & polynomial 3 & 8317 & 128.6375 \\ \hline
+10 & 0.01 & polynomial & 4 & 8345 & 129.9472 \\ \hline
+10 & 0.01 & sigmoid & N/A & 12963 & 1427.655 \\ \hline
+\end{ddbasictable}
 
 
 \ddsubsec{impl}{Implementation}
