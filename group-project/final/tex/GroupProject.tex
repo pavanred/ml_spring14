@@ -57,7 +57,8 @@ currently the largest in the nation with over 1,200 bicycles at 140
 stations. The data set put together by The University of California at Irvine
 has features like date, weather, weekdays, holidays and count of bikes
 rented. These features of the data make it apt for research such as finding
-patterns between different features and number of bikes rented.
+patterns between different features and number of bikes rented.  Feature
+selection was in part chosen based on data manipulation\ci{gebhart2013impact}.
 
 The data set was created from three different sources. Bike trip logs were
 collected from Capital Bikeshare, merged with weather data from Freemeteo and a
@@ -68,9 +69,17 @@ years (2011 - 2012).
 %Washington observes average windspeed throughout the year, we choose to ignore
 %windspeed as a feature in few analysis models.
 
+The correlation coefficient of temperature, feeling temperature between count
+are both 0.40, which shows they have moderate positive linear relationship.
+\ddFigref{predicted-vs-actuals} illustrates the variation tendency of
+the positively correlated bike counts and temperature.
+
+\ddfigure{\figwidth}{predicted-vs-actuals}{Predicted Values vs. Actual Values}
+
+
 \ddsubsec{data-def}{Data Definition} 
 
-The compiled set of parameters features used follow in table \ddtabref{params}.
+The compiled set of parameters features used follow in \ddtabref{params}.
 
 \begin{ddbasictable}{params}{Data Features}{|l|l|}
 \hline
@@ -196,6 +205,12 @@ coefficients, -0.1171 and 0.02942 respectively.
 
 \ddsec{approach}{Approach}
 
+Our approach involved linear regression, logistical regression, na{\"i}ve Bayesian
+classification, SVM, and decision tree.  Both linear regression and SVM was used
+for prediction while logistical regression, na{\"i}ve Bayesian classification,
+SVM and decision tree was used for classification.
+
+
 \ddsubsec{reg}{Regression}
 
 \ddsubsubsec{lin-reg}{Linear Regression}
@@ -244,6 +259,7 @@ sigmoid functions.
 
 \ddsubsec{eval}{Evaluation}
 
+The results of the experiments gave a wide variety of success.
 
 \ddsubsubsec{train-test}{Training and Testing}
 
@@ -337,6 +353,47 @@ Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 \\ \hline
 \end{ddbasictable}
 
 The accuracy of logistic regression classification was 99.60\%.
+
+
+\ddsubsec{svm-class-res}{SVM (SMO)}
+
+\begin{ddbasictable}{svm-class-res}{SVM Classification Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+0.999 & 0.069 & 0.997 & 0.999 & 0.998 & 0.61 & low \\ \hline
+0.931 & 0.001 & 0.979 & 0.931 & 0.955 & 0.906 & high \\ \hline
+Weighted Avg. & 0.996 & 0.066 & 0.996 & 0.996 & 0.996 & 0.623 \\ \hline
+\end{ddbasictable}
+
+
+\begin{ddbasictable}{svm-conf-res}{SVM Classification Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2339 & 2 & Low \\ \hline
+7 & 95 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of SVM classification was 99.6316\%.
+
+
+\ddsubsec{bn-res}{Na{\"i}ve Bayes}
+
+\begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+0.998 & 0.118 & 0.995 & 0.998 & 0.997 & 0.878 & low \\ \hline
+0.882 & 0.002 & 0.957 & 0.882 & 0.918 & 0.958 & high \\ \hline
+Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
+\end{ddbasictable}
+
+\begin{ddbasictable}{nb-res}{Na{\"i}ve Bayes Classification Results}{|l|l|l|l}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2337 & 4 & Low \\ \hline
+12 & 90 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of na{\"i}ve bayes classification was 99.3451\%.
 
 
 \ddsubsec{svm-res}{SVM}
