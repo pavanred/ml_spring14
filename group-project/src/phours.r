@@ -79,6 +79,35 @@ sqrt(mean(error**2))
 #RMSE 128.6375
 summary(svm.model)
 
+
+#non linear kernels - cubic
+svm6.model <- svm(count ~ season_spring + season_summer + season_fall + jan + feb + mar + apr + may + jun + jul + aug + nov + hour0 + hour1 +  hour2 + hour3 + hour4 + hour5 + hour7 + hour8 + hour9 + hour10 +   hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 +   hour18 + hour19 + hour20 + hour21 + hour22 + holiday + weekday0 +   weekday1 + weekday2 + weekday3 + weekday4 + weather_clear +   weather_lightprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='polynomial', cross=3)
+svm6.pred <- predict(svm6.model, data.test)
+error <- svm6.pred - data.test$count
+sqrt(mean(error**2)) 
+#RMSE 128.6375
+summary(svm6.model)
+
+
+#non linear kernels - quad
+svm2.model <- svm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='polynomial', cross=3, degree=5)
+svm2.pred <- predict(svm2.model, data.test)
+error <- svm2.pred - data.test$count
+sqrt(mean(error**2)) 
+#RMSE 133.0355
+summary(svm2.model)
+
+
+#non linear kernels - quad
+svm3.model <- svm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='polynomial', cross=3, degree=4)
+svm3.pred <- predict(svm3.model, data.test)
+crossprod(svm3.pred - data.test$count) / nrow(data.test)
+error <- svm3.pred - data.test$count
+sqrt(mean(error**2)) 
+#RMSE 129.9472
+summary(svm3.model)
+
+
 #3-fold cross-validation on training data  
 #Total Mean Squared Error: 4227.01 
 #Squared Correlation Coefficient: 0.8365405 
@@ -90,14 +119,23 @@ summary(svm.model)
 #-57.46   51.71  149.90  170.50  247.70  658.70 
 
 #non linear kernels - sigmoid
-svm.model <- svm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='sigmoid')
-svm.pred <- predict(svm.model, data.test)
-crossprod(svm.pred - data.test$count) / nrow(data.test)
+svm4.model <- svm(count ~ season_spring + season_summer + season_fall + jan + feb + mar + apr + may + jun + jul + aug + nov + hour0 + hour1 +  hour2 + hour3 + hour4 + hour5 + hour7 + hour8 + hour9 + hour10 +   hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 +   hour18 + hour19 + hour20 + hour21 + hour22 + holiday + weekday0 +   weekday1 + weekday2 + weekday3 + weekday4 + weather_clear +   weather_lightprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='sigmoid')
+svm4.pred <- predict(svm4.model, data.test)
+crossprod(svm4.pred - data.test$count) / nrow(data.test)
 
-error <- svm.pred - data.test$count
+error <- svm4.pred - data.test$count
 sqrt(mean(error**2)) 
 #RMSE 128.6375
-summary(svm.model)
+summary(svm4.model)
+
+
+svm5.model <- svm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='sigmoid')
+svm5.pred <- predict(svm5.model, data.test)
+error <- svm5.pred - data.test$count
+sqrt(mean(error**2)) 
+#RMSE 128.6375
+summary(svm5.model)
+
 
 #poission regression
 m1 <- glm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + (atemp^2) + humidity + windspeed, family = "poisson", data = data.train)
