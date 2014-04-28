@@ -10,19 +10,26 @@ data <- read.csv(file='../data/hour_dummied.csv', header=T, sep=',')
 
 boxplot(data$count)
 
-bound <- floor(0.75 * nrow(data))         #define % of training and test set
+bound <- floor(0.70 * nrow(data))         #define % of training and test set
 #df <- df[sample(nrow(df)), ]           #sample rows 
 data.train <- data[1:bound, ]              #get training set
 data.test <- data[(bound+1):nrow(data), ]    #get test set
 
 #Linear Regression
 #model <- lm(cnt ~ season + mnth + holiday + weekday + workingday + weathersit + atemp + hum + windspeed, data.train)
-#summary(model)
+summary(model)
 #Multiple R-squared:  0.269,  Adjusted R-squared:  0.2685 
 #F-statistic: 532.5 on 9 and 13024 DF,  p-value: < 2.2e-16
 
 #Linear Regression - dummies
-model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data.train)
+#model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data.train)
+
+model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp**2 + sqrt(humidity) + sqrt(windspeed), data.train)
+
+# final model
+model <-  lm(count ~ season_spring + season_summer + season_fall + jan + feb + mar + apr + may + jun + jul + aug + nov + hour0 + hour1 +  hour2 + hour3 + hour4 + hour5 + hour7 + hour8 + hour9 + hour10 +   hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 +   hour18 + hour19 + hour20 + hour21 + hour22 + holiday + weekday0 +   weekday1 + weekday2 + weekday3 + weekday4 + weather_clear +   weather_lightprecipitation + atemp + humidity + windspeed, data.train)
+
+
 summary(model)
 #Multiple R-squared:  0.647,  Adjusted R-squared:  0.6456 
 #F-statistic: 475.9 on 50 and 12983 DF,  p-value: < 2.2e-16
@@ -38,6 +45,10 @@ model <- lm(count ~ season_spring + season_summer + season_fall + season_winter 
 summary(model)
 #Multiple R-squared:  0.647,  Adjusted R-squared:  0.6456 
 #F-statistic: 475.9 on 50 and 12983 DF,  p-value: < 2.2e-16
+
+error <-  test - data.test$count
+sqrt(mean(error**2)) 
+
 
 #Influence Matrix
 influence(model)

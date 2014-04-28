@@ -11,7 +11,7 @@
 
 \newcommand{\ci}[1]{\cite{#1}}
 \newcommand{\rtt}{${\mathit R}^2$}
-\newcommand{\figwidth}{5in}
+\newcommand{\figwidth}{5.5in}
 
 \usepackage{zenacademic}
 \date{}
@@ -22,9 +22,10 @@
 
 \maketitle
 \thispagestyle{empty}
-%\newpage
+\newpage
 %\vspace{-1cm}
 \tableofcontents
+\newpage
 
 \ddsec{intro}{Introduction}
 
@@ -69,13 +70,6 @@ years (2011 - 2012).
 %Washington observes average windspeed throughout the year, we choose to ignore
 %windspeed as a feature in few analysis models.
 
-The correlation coefficient of temperature, feeling temperature between count
-are both 0.40, which shows they have moderate positive linear relationship.
-\ddFigref{predicted-vs-actuals} illustrates the variation tendency of
-the positively correlated bike counts and temperature.
-
-\ddfigure{\figwidth}{predicted-vs-actuals}{Predicted Values vs. Actual Values}
-
 
 \ddsubsec{data-def}{Data Definition} 
 
@@ -114,7 +108,7 @@ of different kind of users\footnote{Registered and non-registered users}. This
 analysis would help bike sharing companies to predict what number to bikes they
 need to stock on any given day.
 
-\ddsec{prob}{Feature Selection}
+\ddsec{feat-sel}{Feature Selection}
 WILL CHANGE
 We used various methods for data processing and choosing features to build the classification and regression models. 
 
@@ -229,7 +223,7 @@ y_i = \beta_0 + \beta_1x_{i1} + \cdots + \beta_px_{ip} + \varepsilon_i = {\mathb
 x}_i^{T}\beta + \varepsilon_i, \; \; \; i = 1, \ldots, n
 \end{equation}
 
-where $p$p is the number of variables. Examples of values of x are weather
+where $p$ is the number of variables. Examples of values of x are weather
 (i.e. rain), temperature, number of rentals, etc. The $\beta$ values are the
 learned parameters.
 
@@ -291,7 +285,7 @@ SS_{tot} = \sum_i(y_i - \overline{y})^2
 \end{gathered}
 \end{equation}
 where $\overline{y}$ is the mean value; that is the total sum of squares and
-$SS\_res$ is the sum of squared residuals.
+$SS_{res}$ is the sum of squared residuals.
 
 Root Mean Squared Error (RMSE) is a measure of the square root of the mean of
 the squared errors or squared deviations of the prediction values from the
@@ -362,7 +356,7 @@ The accuracy of logistic regression classification was 99.60\%.
 
 \ddsubsec{svm-class-res}{SVM (SMO)}
 
-\begin{ddbasictable}{svm-class-res}{SVM Classification Results}{|l|l|l|l|l|l|l|}
+\begin{ddbasictable}{svm-class-res}{SVM Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
 0.999 & 0.069 & 0.997 & 0.999 & 0.998 & 0.61 & low \\ \hline
@@ -383,7 +377,7 @@ The accuracy of SVM classification was 99.6316\%.
 
 \ddsubsec{bn-res}{Na{\"i}ve Bayes}
 
-\begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification Results}{|l|l|l|l|l|l|l|}
+\begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
 0.998 & 0.118 & 0.995 & 0.998 & 0.997 & 0.878 & low \\ \hline
@@ -391,7 +385,7 @@ The accuracy of SVM classification was 99.6316\%.
 Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
 \end{ddbasictable}
 
-\begin{ddbasictable}{nb-res}{Na{\"i}ve Bayes Classification Results}{|l|l|l|l}
+\begin{ddbasictable}{nb-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l}
 \hline
 {\bf Low} & {\bf High} & \\ \hline
 2337 & 4 & Low \\ \hline
@@ -401,10 +395,44 @@ Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
 The accuracy of na{\"i}ve bayes classification was 99.3451\%.
 
 
-\ddsubsec{svm-res}{SVM}
+\ddsubsec{lin-reg-res}{Linear and Non-Linear Regression}
+
+The R-squared training data value obtained from the linear regression runs was
+0.2522 and the coefficients detailed in table \ddtabref{lin-reg-res}.  The RMSE
+of the predicted values is 207.856.  These analysis comes from the hourly data.
+
+The processed data mentioned in \ddsec{feat-sel} yielded an R-squared training data
+value of 0.646.  The RMSE of the predicted values is 163.3292.
+
+This test was repeated by square rooting humidity and windspeed, squaring atemp
+and yielded an R-squared value of 0.6442.  These variables were chosen from the
+data analysis performed on the correlation matrix.  The RMSE of the predicted
+values is 163.8344.
+
+
+\begin{ddbasictable}{lin-reg-res}{Linear Regression Coefficients by Hour}{|c|l|l|}
+\hline
+{\bf Parameter} & {\bf Description} & {\bf Coefficient} \\ \hline
+$\beta_0$ & Intercept & 123.7933 \\ \hline
+$\beta_1$ & season & 7.6740 \\ \hline
+$\beta_2$ & mnth & -2.3836 \\ \hline
+$\beta_3$ & holiday & -23.3311 \\ \hline
+$\beta_4$ & weekday & 1.3178 \\ \hline
+$\beta_5$ & workingday & -0.5981 \\ \hline
+$\beta_6$ & weathersit & 1.6828 \\ \hline
+$\beta_7$ & atemp & 357.3604 \\ \hline
+$\beta_8$ & hum & -225.3344 \\ \hline
+$\beta_9$ & windspeed & 36.6928 \\ \hline
+\end{ddbasictable}
+
+
+
+\ddsubsec{svm-res}{SVM Regression}
 
 The stepwise regression given in \ddsecref{stepwise} did not provide good
 results.  Instead the following parameters were used for the SVM model.
+However, it did perform similar to linear regression as described in
+\ddsecref{lin-reg-res} with a RMSE value of 163.1421.
 
 \begin{packedlist}
 \item discretized seasons
@@ -418,8 +446,8 @@ results.  Instead the following parameters were used for the SVM model.
 \item windspeed
 \end{packedlist}
 
-The results for the cross fold validation for SVM are given in
-\ddtabref{svm-results}.
+The epsilon value used for all SVM regression runs was 0.1.  The results for
+the cross fold validation for SVM are given in \ddtabref{svm-results}.
 
 \begin{ddbasictable}{svm-results}{SVM Results}{|l|l|l|l|l|l|}
 \hline
@@ -430,6 +458,17 @@ The results for the cross fold validation for SVM are given in
 10 & 0.01 & polynomial & 4 & 8345 & 129.9472 \\ \hline
 10 & 0.01 & sigmoid & N/A & 12963 & 1427.655 \\ \hline
 \end{ddbasictable}
+
+
+\ddsubsec{res-conc}{Results Conclusion}
+
+The correlation coefficient of temperature, feeling temperature between count
+are both 0.40, which shows they have moderate positive linear relationship.
+\ddFigref{predicted-vs-actuals} illustrates the variation tendency of
+the positively correlated bike counts and temperature by hour.
+
+\ddfigure{\figwidth}{predicted-vs-actuals}{Predicted Values vs. Actual Values}
+
 
 
 \ddsubsec{impl}{Implementation}
