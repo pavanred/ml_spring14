@@ -24,10 +24,10 @@ summary(model)
 #Linear Regression - dummies
 #model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data.train)
 
-model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp**2 + sqrt(humidity) + sqrt(windspeed), data.train)
+#model <- lm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp**2 + sqrt(humidity) + sqrt(windspeed), data.train)
 
 # final model
-model <-  lm(count ~ season_spring + season_summer + season_fall + jan + feb + mar + apr + may + jun + jul + aug + nov + hour0 + hour1 +  hour2 + hour3 + hour4 + hour5 + hour7 + hour8 + hour9 + hour10 +   hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 +   hour18 + hour19 + hour20 + hour21 + hour22 + holiday + weekday0 +   weekday1 + weekday2 + weekday3 + weekday4 + weather_clear +   weather_lightprecipitation + atemp + humidity + windspeed, data.train)
+#model <-  lm(count ~ season_spring + season_summer + season_fall + jan + feb + mar + apr + may + jun + jul + aug + nov + hour0 + hour1 +  hour2 + hour3 + hour4 + hour5 + hour7 + hour8 + hour9 + hour10 +   hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 +   hour18 + hour19 + hour20 + hour21 + hour22 + holiday + weekday0 +   weekday1 + weekday2 + weekday3 + weekday4 + weather_clear +   weather_lightprecipitation + atemp + humidity + windspeed, data.train)
 
 
 summary(model)
@@ -77,7 +77,6 @@ sqrt(mean(error**2))
 
 summary(svm.model)  
 table(svm.pred,data.test$count)
-
 plot(data.test$count~svm.pred)
 abline(data.test$count~svm.pred)
 

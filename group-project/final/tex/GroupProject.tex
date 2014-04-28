@@ -109,8 +109,14 @@ analysis would help bike sharing companies to predict what number to bikes they
 need to stock on any given day.
 
 \ddsec{feat-sel}{Feature Selection}
-WILL CHANGE
-We used various methods for data processing and choosing features to build the classification and regression models. 
+
+We used various methods for data processing and choosing features to build the
+classification and regression models.
+
+Most of the data by hour shows lower count frequencies with the max at 0 - 400
+as shown in \ddfigref{freq-histogram}.
+
+\ddfigure{\figwidth}{freq-histogram}{Bike Rental Count Frequency}
 
 
 \ddsubsec{feat-scaling}{Feature Scaling}
@@ -120,13 +126,14 @@ of the feature variables. The range of the features are normalized to a value
 having unit variance. The values can standardized to either ranging from (0 to
 1), this can be obtained by normalizing by the maximum value or ranging from
 (-1 to 1) which can be obtained by subtracting the value by the mean and then
-normalizing by the maximum value.  For example, the temperature ranges from 0
-to 40 deg C but it is standardized to a variable having unit variance ranging
-from (0 to 1). We used standardized features for variables temperature, feels
-like temperature, humidity and wind speeds. The consequence of using feature
-scaling is to make sure all the features have similar variances and ranges
-which inturn helps in faster convergence of gradient descent of the cost
-function for the regression models.
+normalizing by the maximum value.
+
+For example, the temperature ranges from 0 to 40 deg C but it is standardized
+to a variable having unit variance ranging from (0 to 1). We used standardized
+features for variables temperature, feels like temperature, humidity and wind
+speeds. The consequence of using feature scaling is to make sure all the
+features have similar variances and ranges which inturn helps in faster
+convergence of gradient descent of the cost function for the regression models.
 
 \ddsubsec{dep-cor-mat}{Dependent Variable Correlation matrix}
 
@@ -401,7 +408,7 @@ The R-squared training data value obtained from the linear regression runs was
 0.2522 and the coefficients detailed in table \ddtabref{lin-reg-res}.  The RMSE
 of the predicted values is 207.856.  These analysis comes from the hourly data.
 
-The processed data mentioned in \ddsec{feat-sel} yielded an R-squared training data
+The processed data mentioned in \ddsecref{feat-sel} yielded an R-squared training data
 value of 0.646.  The RMSE of the predicted values is 163.3292.
 
 This test was repeated by square rooting humidity and windspeed, squaring atemp
