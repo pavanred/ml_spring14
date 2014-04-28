@@ -288,19 +288,83 @@ increase and decrease the values of regularization parameters accordingly.
             
 Evaluation for J48 and logistic regression models is done based on accuracy,
 precision, recall and f-measure. These measures can be computed from truth
-table.
+table. Accuracy shows how close the model was in predicting right outcomes,
+precision is the fraction of data marked as relevant and relevant data by test
+$\frac{TP}{TP + FP}$, recall is the fraction of data marked as relevant and all
+data supposed as relevant $\frac{TP}{TP + FN}$ and f-measure is another measure
+to compute a model’s accuracy using precision and recall.
 
 
 \ddsec{results}{Experimental Results}
 
-SVM yielded interesting results.
+
+\ddsubsec{des-tree-res}{J48 Decision Trees}
+
+\begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+& 0.999 & 0.079 & 0.997 & 0.999 & 0.998 & low \\ \hline
+& 0.921 & 0.001 & 0.976 & 0.921 & 0.948 & high \\ \hline
+Weighted Avg. & 0.996 & 0.075  & 0.996 & 0.996 & 0.996 &\\ \hline
+\end{ddbasictable}
+
+\begin{ddbasictable}{dec-tree-res}{Decision Tree Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2064 & 2 & Low \\ \hline
+7 & 82 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of the decision tree classification was 99.536\% 
+
+
+\ddsubsec{log-reg-res}{Logistic Regression}
+
+\begin{ddbasictable}{log-reg-res}{Logistic Regression Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+& 0.998 & 0.047 & 0.998 & 0.998 & 0.998 & low \\ \hline
+& 0.953 & 0.002 & 0.956 & 0.953 & 0.955 & high \\ \hline
+Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 \\ \hline
+
+\end{ddbasictable}
+
+\begin{ddbasictable}{dec-tree-res}{Logistic Regression Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+6996 & 14 & Low \\ \hline
+15  & 307 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of logistic regression classification was 99.60\%.
+
+
+\ddsubsec{svm-res}{SVM}
+
+The stepwise regression given in \ddsecref{stepwise} did not provide good
+results.  Instead the following parameters were used for the SVM model.
+
+\begin{packedlist}
+\item discretized seasons
+\item discretized months
+\item discretized hours
+\item discretized weekdays
+\item workingday
+\item discretized weather (clear, cloudy, perception)
+\item atemp
+\item humidity
+\item windspeed
+\end{packedlist}
+
+The results for the cross fold validation for SVM are given in
+\ddtabref{svm-results}.
 
 \begin{ddbasictable}{svm-results}{SVM Results}{|l|l|l|l|l|l|}
 \hline
 {\bf Cost} & {\bf Gamma} & {\bf Kernel} & {\bf Degree} & {\bf Vector Count} & {\bf RSME} \\ \hline
 1000 & 0.0001 & radial & N/A & 8724 & 139.6982 \\ \hline
 10 & 0.01 & polynomial & 2 & 8807 & 133.0355 \\ \hline
-10 & 0.01 & polynomial 3 & 8317 & 128.6375 \\ \hline
+10 & 0.01 & polynomial & 3 & 8317 & 128.6375 \\ \hline
 10 & 0.01 & polynomial & 4 & 8345 & 129.9472 \\ \hline
 10 & 0.01 & sigmoid & N/A & 12963 & 1427.655 \\ \hline
 \end{ddbasictable}
