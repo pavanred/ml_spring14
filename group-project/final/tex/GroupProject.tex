@@ -189,18 +189,23 @@ rentals, which resulted in $0.09$.
 \ddsubsec{stepwise}{Stepwise Regression Feature Selection}
 
 %% no edits from paul after this 4/27/2014
+
 Stepwise regression is a method used to automate the process of choosing the
 feature variables used in the regression models. This method allows selecting a
 subset of the predictor variables from a larger set of predictor variables by
 performing a stepwise regression. The stepwise regression can be performed by
-forward selection, backward elimination or both. We used backward elimination
-stepwise regression, this includes starting with a model that has all the
-predictor variables, and then deleting variables from the model that improves
-the model the most after its deletion, iteratively.  Using stepwise regression,
-we were able to ascertain that features such a hour23 (23rd hour of the day),
-season\_winter (winter season) are eliminated from the model. The predictor
-variables such as hour23 and season\_winter have very low correlation
-coefficients, -0.1171 and 0.02942 respectively.
+forward selection, backward elimination or both. Forward selection is a method
+where the algorithm starts with no predictor variables and adds variables
+iteratively, choosing variable based on which improves the model the
+most. Backward elimination is where the algorithm starts with a model that has
+all the predictor variables, and then deletes variables from the model that
+improves the model the most after its deletion, iteratively. We used both
+forward selection and backward elimination stepwise regression.
+
+Using stepwise regression, we were able to ascertain that features such a
+hour23 (23rd hour of the day), season\_winter (winter season) are eliminated
+from the model. The predictor variables such as hour23 and season\_winter have
+very low correlation coefficients, -0.1171 and 0.02942 respectively.
 
 
 \ddsec{approach}{Approach}
