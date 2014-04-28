@@ -11,6 +11,7 @@
 
 \newcommand{\ci}[1]{\cite{#1}}
 \newcommand{\rtt}{${\mathit R}^2$}
+\newcommand{\figwidth}{5in}
 
 \usepackage{zenacademic}
 
@@ -19,6 +20,8 @@
 \begin{document}
 
 \maketitle
+\thispagestyle{empty}
+%\newpage
 \tableofcontents
 
 \ddsec{intro}{Introduction}
@@ -122,8 +125,6 @@ function for the regression models.
 
 \ddsubsec{dep-cor-mat}{Dependent Variable Correlation matrix}
 
-picture
-
 \begin{ddbasictable}{feat-cor-mat}{Features Correlation Matrix}{|l|l|l|l|l|l|l|l|l|}
 \hline
 & workingday & temp & atemp & hum & windspeed & casual & registered & cnt \\ \hline
@@ -153,7 +154,10 @@ and humidity (value = -0.32) has moderate positive-negative linear relationship
 with count (the total bike count of each hour). This indicates that these
 features implies an important role in regression and classification algorithms.
 This information helps us to do feature selection when building models for
-prediction.
+prediction.  \ddFigref{temp-count-cor} shows the temperature to bike rental
+count, which resulted in $0.4$.
+
+\ddfigure{\figwidth}{temp-count-cor}{Temperature Bike Counts Correlation}
 
 Note that, the correlation coefficient of windspeed and count is only 0.09.
 This number indicates a very weak linear relationship correlation.  This
@@ -164,6 +168,12 @@ be described as a ``gentle breeze'' defined by the
 Beaufort\footnote{http://en.wikipedia.org/wiki/Beaufort\_scale} wind force
 scale. Therefore, both the correlation coefficient value and real windspeed
 data show that windspeed will not affect the rental numbers of the D.C. area.
+
+\ddFigref{wind-count-cor} shows the correlation between wind speeds and
+rentals, which resulted in $0.09$.
+
+\ddfigure{\figwidth}{wind-count-cor}{Correlation of Wind Speed and Rentals}
+
 
 \ddsubsec{stepwise}{Stepwise Regression Feature Selection}
 
@@ -226,10 +236,13 @@ influence reaches etc. For kernel functions we experimented with SVM models
 that used different kernel functions such as linear, polynomial, radial and
 sigmoid functions.
 
+%% SVM RESULTS HERE
 		
 \ddsubsec{reg-class}{Classification}
 
+
 \ddsubsec{eval}{Evaluation}
+
 
 \ddsubsubsec{train-test}{Training and Testing}
 
@@ -249,15 +262,12 @@ all the runs.
 The regression model and predictions are evaluated using Coefficient of
 Determination or \rtt\ and Root Mean Squared Error (RMSE).  \rtt\ is the
 measure of how well a model has fit the data. \rtt\ can be computed by
-
 \begin{equation}
 \begin{gathered}
 R^2 \equiv 1 - \frac{SS_{res}}{SS_{tot}}\\
 SS_{tot} = \sum_i(y_i - \overline{y})^2
 \end{gathered}
 \end{equation}
-
-
 where $\overline{y}$ is the mean value; that is the total sum of squares and
 $SS\_res$ is the sum of squared residuals.
 
