@@ -317,99 +317,19 @@ data supposed as relevant $\frac{TP}{TP + FN}$ and f-measure is another measure
 to compute a model’s accuracy using precision and recall.
 
 
+
 \ddsec{results}{Experimental Results}
 
+\ddsubsec{reg-res}{Regression}
 
-\ddsubsec{des-tree-res}{J48 Decision Trees}
-
-\begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
-\hline
-& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
-& 0.999 & 0.079 & 0.997 & 0.999 & 0.998 & low \\ \hline
-& 0.921 & 0.001 & 0.976 & 0.921 & 0.948 & high \\ \hline
-Weighted Avg. & 0.996 & 0.075  & 0.996 & 0.996 & 0.996 &\\ \hline
-\end{ddbasictable}
-
-\begin{ddbasictable}{dec-tree-res}{Decision Tree Confusion Matrix}{|l|l|l|}
-\hline
-{\bf Low} & {\bf High} & \\ \hline
-2064 & 2 & Low \\ \hline
-7 & 82 & High \\ \hline
-\end{ddbasictable}
-
-The accuracy of the decision tree classification was 99.536\% 
-
-
-\ddsubsec{log-reg-res}{Logistic Regression}
-
-\begin{ddbasictable}{log-reg-res}{Logistic Regression Results}{|l|l|l|l|l|l|l|}
-\hline
-& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
-& 0.998 & 0.047 & 0.998 & 0.998 & 0.998 & low \\ \hline
-& 0.953 & 0.002 & 0.956 & 0.953 & 0.955 & high \\ \hline
-Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 \\ \hline
-
-\end{ddbasictable}
-
-\begin{ddbasictable}{dec-tree-res}{Logistic Regression Confusion Matrix}{|l|l|l|}
-\hline
-{\bf Low} & {\bf High} & \\ \hline
-6996 & 14 & Low \\ \hline
-15  & 307 & High \\ \hline
-\end{ddbasictable}
-
-The accuracy of logistic regression classification was 99.60\%.
-
-
-\ddsubsec{svm-class-res}{SVM (SMO)}
-
-\begin{ddbasictable}{svm-class-res}{SVM Classification By Hour}{|l|l|l|l|l|l|l|}
-\hline
-& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
-0.999 & 0.069 & 0.997 & 0.999 & 0.998 & 0.61 & low \\ \hline
-0.931 & 0.001 & 0.979 & 0.931 & 0.955 & 0.906 & high \\ \hline
-Weighted Avg. & 0.996 & 0.066 & 0.996 & 0.996 & 0.996 & 0.623 \\ \hline
-\end{ddbasictable}
-
-
-\begin{ddbasictable}{svm-conf-res}{SVM Classification Confusion Matrix}{|l|l|l|}
-\hline
-{\bf Low} & {\bf High} & \\ \hline
-2339 & 2 & Low \\ \hline
-7 & 95 & High \\ \hline
-\end{ddbasictable}
-
-The accuracy of SVM classification was 99.6316\%.
-
-
-\ddsubsec{bn-res}{Na{\"i}ve Bayes}
-
-\begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l|l|l|l|}
-\hline
-& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
-0.998 & 0.118 & 0.995 & 0.998 & 0.997 & 0.878 & low \\ \hline
-0.882 & 0.002 & 0.957 & 0.882 & 0.918 & 0.958 & high \\ \hline
-Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
-\end{ddbasictable}
-
-\begin{ddbasictable}{nb-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l}
-\hline
-{\bf Low} & {\bf High} & \\ \hline
-2337 & 4 & Low \\ \hline
-12 & 90 & High \\ \hline
-\end{ddbasictable}
-
-The accuracy of na{\"i}ve bayes classification was 99.3451\%.
-
-
-\ddsubsec{lin-reg-res}{Linear and Non-Linear Regression}
+\ddsubsubsec{lin-reg-res}{Linear and Non-Linear Regression}
 
 The R-squared training data value obtained from the linear regression runs was
 0.2522 and the coefficients detailed in table \ddtabref{lin-reg-res}.  The RMSE
 of the predicted values is 207.856.  These analysis comes from the hourly data.
 
-The processed data mentioned in \ddsecref{feat-sel} yielded an R-squared training data
-value of 0.646.  The RMSE of the predicted values is 163.3292.
+The processed data mentioned in \ddsecref{feat-sel} yielded an R-squared
+training data value of 0.646.  The RMSE of the predicted values is 163.3292.
 
 This test was repeated by square rooting humidity and windspeed, squaring atemp
 and yielded an R-squared value of 0.6442.  These variables were chosen from the
@@ -433,13 +353,10 @@ $\beta_9$ & windspeed & 36.6928 \\ \hline
 \end{ddbasictable}
 
 
-
-\ddsubsec{svm-res}{SVM Regression}
+\ddsubsubsec{svm-res}{SVM Regression}
 
 The stepwise regression given in \ddsecref{stepwise} did not provide good
 results.  Instead the following parameters were used for the SVM model.
-However, it did perform similar to linear regression as described in
-\ddsecref{lin-reg-res} with a RMSE value of 163.1421.
 
 \begin{packedlist}
 \item discretized seasons
@@ -453,19 +370,110 @@ However, it did perform similar to linear regression as described in
 \item windspeed
 \end{packedlist}
 
+However, it did perform similar to linear regression as described in
+\ddsecref{lin-reg-res} with a RMSE value of 163.1421.
+
 The epsilon value used for all SVM regression runs was 0.1.  The results for
 the cross fold validation for SVM are given in \ddtabref{svm-results}.
 
 \begin{ddbasictable}{svm-results}{SVM Results}{|l|l|l|l|l|l|}
 \hline
-{\bf Cost} & {\bf Gamma} & {\bf Kernel} & {\bf Degree} & {\bf Vector Count} & {\bf RSME} \\ \hline
+{\bf Cost} & {\bf Gamma} & {\bf Kernel} & {\bf Degree} & {\bf Vector Count} & {\bf RMSE} \\ \hline
 1000 & 0.0001 & radial & N/A & 8724 & 139.6982 \\ \hline
+10 & 0.01 & sigmoid & N/A & 12963 & 1427.655 \\ \hline
 10 & 0.01 & polynomial & 2 & 8807 & 133.0355 \\ \hline
 10 & 0.01 & polynomial & 3 & 8317 & 128.6375 \\ \hline
 10 & 0.01 & polynomial & 4 & 8345 & 129.9472 \\ \hline
-10 & 0.01 & sigmoid & N/A & 12963 & 1427.655 \\ \hline
 \end{ddbasictable}
 
+The scatter plot of the SVM prediction with the bike rental counts in
+\ddfigref{actual-vs-predict-svm} graphically shows the error well.
+
+\ddfigure{\figwidth}{actual-vs-predict-svm}{Actual Rentals vs. Predicated Values}
+
+
+\ddsubsec{class-res}{Classification}
+
+\ddsubsubsec{des-tree-res}{J48 Decision Trees}
+
+\begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+& 0.999 & 0.079 & 0.997 & 0.999 & 0.998 & low \\ \hline
+& 0.921 & 0.001 & 0.976 & 0.921 & 0.948 & high \\ \hline
+Weighted Avg. & 0.996 & 0.075  & 0.996 & 0.996 & 0.996 &\\ \hline
+\end{ddbasictable}
+
+\begin{ddbasictable}{dec-tree-res}{Decision Tree Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2064 & 2 & Low \\ \hline
+7 & 82 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of the decision tree classification was 99.536\% 
+
+
+\ddsubsubsec{log-reg-res}{Logistic Regression}
+
+\begin{ddbasictable}{log-reg-res}{Logistic Regression Results}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+& 0.998 & 0.047 & 0.998 & 0.998 & 0.998 & low \\ \hline
+& 0.953 & 0.002 & 0.956 & 0.953 & 0.955 & high \\ \hline
+Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 \\ \hline
+
+\end{ddbasictable}
+
+\begin{ddbasictable}{dec-tree-res}{Logistic Regression Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+6996 & 14 & Low \\ \hline
+15  & 307 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of logistic regression classification was 99.60\%.
+
+
+\ddsubsubsec{svm-class-res}{SVM (SMO)}
+
+\begin{ddbasictable}{svm-class-res}{SVM Classification By Hour}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+0.999 & 0.069 & 0.997 & 0.999 & 0.998 & 0.61 & low \\ \hline
+0.931 & 0.001 & 0.979 & 0.931 & 0.955 & 0.906 & high \\ \hline
+Weighted Avg. & 0.996 & 0.066 & 0.996 & 0.996 & 0.996 & 0.623 \\ \hline
+\end{ddbasictable}
+
+
+\begin{ddbasictable}{svm-conf-res}{SVM Classification Confusion Matrix}{|l|l|l|}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2339 & 2 & Low \\ \hline
+7 & 95 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of SVM classification was 99.6316\%.
+
+
+\ddsubsubsec{bn-res}{Na{\"i}ve Bayes}
+
+\begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l|l|l|l|}
+\hline
+& {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
+0.998 & 0.118 & 0.995 & 0.998 & 0.997 & 0.878 & low \\ \hline
+0.882 & 0.002 & 0.957 & 0.882 & 0.918 & 0.958 & high \\ \hline
+Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
+\end{ddbasictable}
+
+\begin{ddbasictable}{nb-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l}
+\hline
+{\bf Low} & {\bf High} & \\ \hline
+2337 & 4 & Low \\ \hline
+12 & 90 & High \\ \hline
+\end{ddbasictable}
+
+The accuracy of na{\"i}ve bayes classification was 99.3451\%.
 
 \ddsubsec{res-conc}{Results Conclusion}
 

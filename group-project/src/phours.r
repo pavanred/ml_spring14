@@ -78,7 +78,8 @@ sqrt(mean(error**2))
 summary(svm.model)  
 table(svm.pred,data.test$count)
 plot(data.test$count~svm.pred)
-abline(data.test$count~svm.pred)
+tmp <- lm(data.test$count~svm.pred)
+abline(tmp,col='red')
 
 #non linear kernels - cubic
 svm.model <- svm(count ~ season_spring + season_summer + season_fall + season_winter + jan + feb + mar + apr + may + jun + jul + aug + sep + oct + nov + dec + hour0 + hour1 + hour2 + hour3 + hour4 + hour5 + hour6 + hour7 + hour8 + hour9 + hour10 + hour11 + hour12 + hour13 + hour14 + hour15 + hour16 + hour17 + hour18 + hour19 + hour20 + hour21 + hour22 + hour23 + holiday + weekday0 + weekday1 + weekday2 + weekday3 + weekday4 + weekday5 + weekday6 + workingday + weather_clear + weather_cloudy + weather_lightprecipitation + weather_heavyprecipitation + atemp + humidity + windspeed, data = data.train, cost = 10, gamma = 0.01, kernel='polynomial', cross=3)
