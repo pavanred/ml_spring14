@@ -278,7 +278,7 @@ We will discretized bike count as ``low'' and ``high'' to show the extreme
 case. But for different companies, the ability of the amount of bikes to
 prepare for stations at each hour is quite different. It means the definition
 of ``low'' and ``high'' of each bike sharing company is different. We will set
-the boundary of ``high'' as 500, 600, 700, 800 respectively and set the
+the boundary of ``high'' as 600, 700, 800 respectively and set the
 boundary of ``low'' as 100 to analyze the performance of our classification
 model.
 
@@ -286,15 +286,7 @@ We used J48 decision tree, naive bayes, SVM and logistic regression models to
 classify hourly bike sharing data. All these models were used with combination
 of multiple features trying to analyze how these features affected prediction
 outcome. Using the correlation matrix we decided which combination of features
-to be used in classification models. In earlier trials J48 decision tree made
-better predictions than logistic regression. After coming across a set of
-features that gave us optimum outcome we tried tweaking classification model
-arguments. For J48 decision tree we tried changing confidence factor, value of
-seed and minimum number of object, but since the accuracy was already high
-making these changes to argument did not cause any significant change to the
-outcome. Similar results where seen with logistic regression model. J48 and SVM
-showed better results, but when we changed threshold of classes J48 produced
-better results.
+to be used in classification models.
 
 
 \ddsubsec{eval}{Evaluation}
@@ -508,6 +500,16 @@ Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
 \end{ddbasictable}
 
 The accuracy of na{\"i}ve bayes classification was 99.3451\%.
+
+In earlier trials J48 decision tree made
+better predictions than logistic regression. After coming across a set of
+features that gave us optimum outcome we tried tweaking classification model
+arguments. For J48 decision tree we tried changing confidence factor, value of
+seed and minimum number of object, but since the accuracy was already high
+making these changes to argument did not cause any significant change to the
+outcome. Similar results where seen with logistic regression model. J48 and SVM
+showed better results, but when we changed threshold of classes J48 produced
+better results.
 
 \ddsubsec{res-conc}{Results Conclusion}
 
