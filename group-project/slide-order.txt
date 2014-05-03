@@ -1,0 +1,9 @@
+Paul: 1 - 4
+Nianzu: 5 - 8
+Pavan: 9 - 12
+Paul: 13 - 16
+Nianzu: 17
+Shreya: 18 - end
+
+
+positive (.3) between registered and working day, but negative (-.52, pretty high) between casual and working day)
