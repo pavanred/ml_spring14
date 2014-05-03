@@ -390,12 +390,9 @@ The stepwise regression given in \ddsecref{stepwise} did not provide good
 results.  Instead the following parameters were used for the SVM model.
 
 \begin{packedlist}
-\item discretized seasons
-\item discretized months
-\item discretized hours
-\item discretized weekdays
-\item workingday
+\item discretized seasons, months, hours, and weekdays
 \item discretized weather (clear, cloudy, perception)
+\item workingday
 \item atemp
 \item humidity
 \item windspeed
@@ -420,16 +417,17 @@ the cross fold validation for SVM are given in \ddtabref{svm-results}.
 The scatter plot of the SVM prediction with the bike rental counts in
 \ddfigref{actual-vs-predict-svm} graphically shows the error well.
 
-\ddfigure{\figwidth}{actual-vs-predict-svm}{Actual Rentals vs. Predicated Values}
-
-
 \ddsubsec{class-res}{Classification}
 
 The purpose of this project was to predict maximum number of bikes rented under
-and give situation. We first use regression models to achieve those
-predictions, but there were few outliers that were not covered by regression
-models. We then created few classification models to make accurate predictions
-for these outliers.
+and give situation. We first used regression models to achieve those
+predictions, but there were few outliers that were not covered by the
+regression models. We then created few classification models to make accurate
+predictions for these outliers.  The results are summarized in
+\ddfigref{actual-vs-predict-svm}.
+
+\ddfigure{\figwidth}{actual-vs-predict-svm}{Actual Rentals vs. Predicated Values}
+
 
 \ddsubsubsec{des-tree-res}{J48 Decision Trees}
 
@@ -449,7 +447,7 @@ mentions if there was rain, snow, thunder or humidity.
 Weighted Avg. & 0.996 & 0.075  & 0.996 & 0.996 & 0.996 &\\ \hline
 \end{ddbasictable}
 
-\begin{ddbasictable}{dec-tree-res}{Decision Tree Confusion Matrix}{|l|l|l|}
+\begin{ddbasictable}{dec-tree-res-conf}{Decision Tree Confusion Matrix}{|l|l|l|}
 \hline
 {\bf Low} & {\bf High} & \\ \hline
 2064 & 2 & Low \\ \hline
@@ -505,7 +503,11 @@ The accuracy of SVM classification was 99.6316\%.
 
 
 \ddsubsubsec{bn-res}{Na{\"i}ve Bayes}
-One of the reasons why Na{\"i}ve Bayes did not provide a better classification model is because we removed latent variables from out feature list   
+
+One of the reasons why Na{\"i}ve Bayes did not provide a better classification
+model is because we removed latent variables from out feature list.
+% as shown in
+%\ddtabref{dec-tree-res}.
 
 \begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
