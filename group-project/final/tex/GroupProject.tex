@@ -121,7 +121,7 @@ classification and regression models.
 The majority of the data instances of the hourly bike rental count are in the range of 0 - 400
 as shown in \ddfigref{freq-histogram}.
 
-\ddfigure{\figwidth}{freq-histogram}{Bike Rental Count Frequency}
+\ddfigure{\figwidth}{freq-histogram}{Bike Rentals Histogram}
 
 
 \ddsubsec{feat-scaling}{Feature Scaling}
@@ -533,9 +533,9 @@ Data processing, was implemented using Java, that is predictor variable
 transformations from nominal to numerical/boolean variables, generation of new
 variables, discretizing the variables.
 
-We used Java and Weka API for building and evaluating classification models. We
-used Weka API for building J48 Decision trees, Naive Bayes , Logistic
-Regression and Support Vector Machines (SVM).
+We used Java and Weka\ci{hall2009weka} API for building and evaluating
+classification models. We used Weka API for building J48 Decision trees, Naive
+Bayes , Logistic Regression and Support Vector Machines (SVM).
 
 We implemented the regression models using R\ci{team2005r} such as Multivariate
 Linear Regression and Support Vector Machines including methods such as
@@ -553,10 +553,6 @@ windspeed throughout the year. This assumption was later proved by correlation
 table. During step-wise regression the model removed ``winter'' since it did not
 have much effect on bike count class. This behavior was observed by
 classification models as well.
-
-We used Java and Weka\ci{hall2009weka} API for building and evaluating
-classification models. We used Weka API for building J48 Decision trees,
-Logistic Regression and Support Vector Machines (SVM).
 
 
 \ddsec{future-speak}{Future Work}
