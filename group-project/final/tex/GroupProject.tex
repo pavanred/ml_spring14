@@ -425,9 +425,11 @@ The scatter plot of the SVM prediction with the bike rental counts in
 
 \ddsubsec{class-res}{Classification}
 
+The purpose of this project was to predict maximum number of bikes rented under and give situation. We first use regression models to achieve those predictions, but there were few outliers that were not covered by regression models. We then created few classification models to make accurate predictions for these outliers. 
 \ddsubsubsec{des-tree-res}{J48 Decision Trees}
 
 \begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
+After using the four classification models discussed in this paper, we observed that J48 produced the best results. From the decision tree provided by J48 we made few conclusions about how the model was handling different features. It seemed like the model was most dependent on time of the day and then affected by weather conditions or what day of the week it is. Also the feature “season” was given second preference to feature “weathersit”. This feature mentions if there was rain, snow, thunder or humidity.
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
 & 0.999 & 0.079 & 0.997 & 0.999 & 0.998 & low \\ \hline
@@ -446,6 +448,8 @@ The accuracy of the decision tree classification was 99.536\%
 
 
 \ddsubsubsec{log-reg-res}{Logistic Regression}
+
+Throughout our experiments it seemed like logistic regressions did not provide results as good as J48. We tried different feature sets, thresholds and evaluation models, but still J48 provided better results.
 
 \begin{ddbasictable}{log-reg-res}{Logistic Regression Results}{|l|l|l|l|l|l|l|}
 \hline
@@ -468,6 +472,7 @@ The accuracy of logistic regression classification was 99.60\%.
 
 \ddsubsubsec{svm-class-res}{SVM (SMO)}
 
+We used SVM for regression models as well as classification models. The regression model did not predict accurate classes for outliers, but when it was used for classification it produced results almost as good as J48. To get a better comparison between J48 and SVM we tried different threshold values and it seemed J48 performs better than SVM in most cases. 
 \begin{ddbasictable}{svm-class-res}{SVM Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
@@ -488,6 +493,7 @@ The accuracy of SVM classification was 99.6316\%.
 
 
 \ddsubsubsec{bn-res}{Na{\"i}ve Bayes}
+One of the reasons why Na{\"i}ve Bayes did not provide a better classification model is because we removed latent variables from out feature list   
 
 \begin{ddbasictable}{svm-class-res}{Na{\"i}ve Bayes Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
