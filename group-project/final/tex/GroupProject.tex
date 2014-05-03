@@ -425,11 +425,23 @@ The scatter plot of the SVM prediction with the bike rental counts in
 
 \ddsubsec{class-res}{Classification}
 
-The purpose of this project was to predict maximum number of bikes rented under and give situation. We first use regression models to achieve those predictions, but there were few outliers that were not covered by regression models. We then created few classification models to make accurate predictions for these outliers. 
+The purpose of this project was to predict maximum number of bikes rented under
+and give situation. We first use regression models to achieve those
+predictions, but there were few outliers that were not covered by regression
+models. We then created few classification models to make accurate predictions
+for these outliers.
+
 \ddsubsubsec{des-tree-res}{J48 Decision Trees}
 
+After using the four classification models discussed in this paper, we observed
+that J48 produced the best results. From the decision tree provided by J48 we
+made few conclusions about how the model was handling different features. It
+seemed like the model was most dependent on time of the day and then affected
+by weather conditions or what day of the week it is. Also the feature
+``season'' was given second preference to feature ``weathersit''. This feature
+mentions if there was rain, snow, thunder or humidity.
+
 \begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
-After using the four classification models discussed in this paper, we observed that J48 produced the best results. From the decision tree provided by J48 we made few conclusions about how the model was handling different features. It seemed like the model was most dependent on time of the day and then affected by weather conditions or what day of the week it is. Also the feature “season” was given second preference to feature “weathersit”. This feature mentions if there was rain, snow, thunder or humidity.
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
 & 0.999 & 0.079 & 0.997 & 0.999 & 0.998 & low \\ \hline
