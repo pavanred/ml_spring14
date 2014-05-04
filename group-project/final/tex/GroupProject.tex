@@ -33,8 +33,8 @@ memberships, multiple bike locations and easy rental and return
 process. Through these systems, a user is able to easily rent a bike from a
 particular station and return back at another station. The biggest issue bike
 sharing systems face is due to adverse effects of harsh weather conditions on
-biking. This paper shows how different weather conditions would affect bike
-usage. The data used here has log of bikes rented in different seasons, under
+biking. This paper shows how different weather conditions affect bike
+usage. The data used is a log of bikes rented in different seasons, under
 different weather conditions and on weekdays or holidays. We use different
 regression and classification algorithms to make relevant predictions for bike
 sharing systems, which would help them deal with extreme conditions like very
@@ -51,13 +51,12 @@ formulate the theory behind the analysis and machine learning tasks.
 
 In recent years bikes have turned out to be an efficient alternate mode of
 transportation in some cities, which lead to growth of bike-sharing
-systems. These systems are quite convenient for users, since the user do not
-have to worry about parking, they have options where you can become a member
-and often these systems let first 30-60 minutes of ride free. Currently there
-are over 500 bike-sharing programs around the world which is composed of over
-500 thousands bicycles\ci{ucibikeshare}.
+systems. These systems are quite convenient for users, include membership and
+some free ride options.  Currently there are over 500 bike-sharing programs
+around the world which is composed of over 500 thousands
+bicycles\ci{ucibikeshare}.
 
-The data set being used in this paper was created from trip logs kept by
+The data set used in this paper was created from trip logs kept by
 Capital Bikeshare (CaBi) in Washington, DC, where Capital Bikeshare is
 currently the largest in the nation with over 1,200 bicycles at 140
 stations. The data set put together by The University of California at Irvine
@@ -110,16 +109,17 @@ The data has hourly and daily usage. In this paper we develop an understanding
 about how humidity, temperature, rainfall, snow and other weather conditions
 affect the number of bikes being rented. We also determine bike rental patterns
 of different kind of users\footnote{Registered and non-registered users}. This
-analysis would help bike sharing companies to predict what number to bikes they
-need to stock on any given day.
+analysis would help bike sharing companies predict bike inventory numbers per
+station on a given day and even hour.
+
 
 \ddsec{feat-sel}{Feature Selection}
 
 We used various methods for data processing and choosing features to build the
 classification and regression models.
 
-The majority of the data instances of the hourly bike rental count are in the range of 0 - 400
-as shown in \ddfigref{freq-histogram}.
+The majority of the data instances of the hourly bike rental count are in the
+range of 0 - 400 as shown in \ddfigref{freq-histogram}.
 
 \ddfigure{\figwidth}{freq-histogram}{Bike Rentals Histogram}
 
@@ -129,8 +129,8 @@ as shown in \ddfigref{freq-histogram}.
 Feature Scaling is a method used for data processing to standardize the range
 of the feature variables. The range of the features are normalized to a value
 having unit variance. The values can standardized to either ranging from (0 to
-1), this can be obtained by normalizing by the maximum value or ranging from
-(-1 to 1) which can be obtained by subtracting the value by the mean and then
+1).  This can be obtained by normalizing by the maximum value or ranging from
+(-1 to 1), which can be obtained by subtracting the value by the mean and then
 normalizing by the maximum value.
 
 For example, the temperature ranges from 0 to 40 deg C but it is standardized
@@ -158,11 +158,18 @@ convergence of gradient descent of the cost function for the regression models.
 Interpretation of \ddtabref{feat-cor-mat} are given below:
 \begin{itemize}
 \item 0 indicates no linear relationship.
-\item +1 indicates a perfect positive linear relationship: as one variable increases in its values, the other variable also increases in its values via an exact linear rule.
-\item -1 indicates a perfect negative linear relationship: as one variable increases in its values, the other variable decreases in its values via an exact linear rule.
-\item Values between 0 and 0.3 (0 and -0.3) indicate a weak positive (negative) linear relationship via a shaky linear rule.
-\item Values between 0.3 and 0.7 (0.3 and -0.7) indicate a moderate positive (negative) linear relationship via a fuzzy-firm linear rule.
-\item Values between 0.7 and 1.0 (-0.7 and -1.0) indicate a strong positive (negative) linear relationship via a firm linear rule.
+\item +1 indicates a perfect positive linear relationship: as one variable
+      increases in its values, the other variable also increases in its values
+      via an exact linear rule.
+\item -1 indicates a perfect negative linear relationship: as one variable
+      increases in its values, the other variable decreases in its values via
+      an exact linear rule.
+\item Values between 0 and 0.3 (0 and -0.3) indicate a weak positive (negative)
+      linear relationship via a shaky linear rule.
+\item Values between 0.3 and 0.7 (0.3 and -0.7) indicate a moderate positive
+      (negative) linear relationship via a fuzzy-firm linear rule.
+\item Values between 0.7 and 1.0 (-0.7 and -1.0) indicate a strong positive
+      (negative) linear relationship via a firm linear rule.
 \end{itemize}
 
 According to the values in \ddtabref{feat-cor-mat} only temp (normalized
@@ -171,8 +178,8 @@ and humidity (value = -0.32) has moderate positive-negative linear relationship
 with count (the total bike count of each hour). This indicates that these
 features implies an important role in regression and classification algorithms.
 This information helps us to do feature selection when building models for
-prediction.  \ddFigref{temp-count-cor} shows the relationsip between temperature and bike rental
-count.
+prediction.  \ddFigref{temp-count-cor} shows the relationsip between
+temperature and bike rental count.
 
 \ddfigure{\figwidth}{temp-count-cor}{Temperature Bike Counts Correlation}
 
@@ -208,28 +215,28 @@ all the predictor variables, and then deletes variables from the model that
 improves the model the most after its deletion, iteratively. We used both
 forward selection and backward elimination stepwise regression.
 
-Using stepwise regression, we were able to ascertain that features such a
-hour23 (23rd hour of the day), season\_winter (winter season) are eliminated
+Using stepwise regression, we were able to ascertain that features such as
+hour23 (23rd hour of the day) and season\_winter (winter season) are eliminated
 from the model. The predictor variables such as hour23 and season\_winter have
-very low correlation coefficients, -0.1171 and 0.02942 respectively.
+very low correlation coefficients (-0.1171 and 0.02942 respectively).
 
 
 \ddsec{approach}{Approach}
 
 Our approach involved linear regression, logistical regression, na{\"i}ve Bayesian
-classification, SVM, and decision tree.  Both linear regression and SVM was used
+classification, SVM, and decision trees.  Both linear regression and SVM was used
 for prediction while logistical regression, na{\"i}ve Bayesian classification,
-SVM and decision tree was used for classification.
+SVM and decision trees were used for classification.
 
 
 \ddsubsec{reg}{Regression}
 
 \ddsubsubsec{lin-reg}{Linear Regression}
 
-We built multiple linear regression models for both daily and hourly data. We
-built multiple regression models based on different feature selections.  Based
-on the data procession, predictor variable analysis, feature selection methods,
-we built multiple linear regression models, which takes the general form:
+We used multiple linear regression models for both daily and hourly data based
+on different feature selections.  Based on the data processing, predictor
+variable analysis, and feature selection methods, we built multiple linear
+regression models, which takes the general form:
 \begin{equation}
 y_i = \beta_0 + \beta_1x_{i1} + \cdots + \beta_px_{ip} + \varepsilon_i = {\mathbf
 x}_i^{T}\beta + \varepsilon_i, \; \; \; i = 1, \ldots, n
@@ -242,50 +249,48 @@ learned parameters.
 
 \ddsubsubsec{non-lin-reg}{Non-linear Regression}
 
-Based on the analysis of the predictor variables, we build non linear
-regression models using nonlinear combination of the model parameters. We
+Based on the analysis of the predictor variables, we build non-linear
+regression models using non-linear combinations of the model parameters. We
 transformed predictor variables such as the temperature, feels like temperature
-to their respective square values. Predictor variables such as wind speed which
-have lower impact on the model, based on the correlation analysis of predictor
+to their respective square values. Predictor variables such as wind speed, which
+have lower impacts on the model, based on the correlation analysis of predictor
 variables, were transformed to square roots of the respective values.  Using
-these non linear combination of the predictor variables, we built non linear
+these non-linear combination of the predictor variables, we built non-linear
 regression models for the hourly dataset.
 
 
 \ddsubsubsec{svm}{Support Vector Machines}
 
-Support Vector Machines (SVM) is a supervised machine learning method that can
-be used to build regression models.  We used SVM to build regression models for
-the hourly dataset. We tuned the SVM models with a multitude of parameters such
-as kernel functions, degree of the polynomial, constant for regularization term
-which intuitively is a parameter that helps mitigate the effects of
-overfitting, $\gamma$ the parameter that defines how far a training example's
-influence reaches etc. For kernel functions we experimented with SVM models
-that used different kernel functions such as linear, polynomial, radial and
-sigmoid functions.
+We used Support Vector Machines (SVM) to build regression models for the hourly
+dataset and tuned the SVM models with a multitude of parameters such as kernel
+functions, degree of the polynomial, constant for regularization term, which
+intuitively is a parameter that helps mitigate the effects of over-fitting,
+$\gamma$ the parameter that defines how far a training example's influence
+reaches etc. For kernel functions we experimented with SVM models that used
+different kernel functions such as linear, polynomial, radial and sigmoid
+functions.
 
 
 \ddsubsec{reg-class}{Classification}
 
 For bike sharing companies, the cost of arranging bikes to different station to
-meet customers’ needs is a big part of the total operation cost. The prediction
-given by regression model could provide good reference for such
+meet customers' needs is a big part of the total operation cost. The prediction
+given by regression model could provide a good reference for such
 companies. However, there are some extreme data instances that cannot be solved
-by regression model prediction. These case will make regression approach less
+by regression model prediction. These cases make the regression approach less
 reliable and will mislead companies decisions for arranging bikes for
-stations. If in some cases, the number of bike needed is extreme high, but
-regression model cannot give such prediction, then it would be a huge loss of
-income of the company and also harm the customers benefit.  A reliable
-classification approach is need to detect such extreme cases and let companies
-to prepare for such cases.
+stations. If in some cases, the number of bikes needed is extremely high, but
+the regression model cannot give such a prediction.  In this case it would be a
+huge loss of income of the company not to mention the impact on customer
+opinion in the company.  A reliable classification approach is needed to detect
+such extreme cases.
 
-We will discretized bike count as ``low'' and ``high'' to show the extreme
+We discretized bike counts as ``low'' and ``high'' to show this extreme
 case. But for different companies, the ability of the amount of bikes to
 prepare for stations at each hour is quite different. It means the definition
 of ``low'' and ``high'' of each bike sharing company is different. We will set
-the boundary of ``high'' as 600, 700, 800 respectively and set the
-boundary of ``low'' as 100 to analyze the performance of our classification
-model.
+the boundary of ``high'' as 600, 700, 800 respectively and set the boundary of
+``low'' as 100 to analyze the performance of our classification model.
 
 We used J48 decision tree, naive bayes, SVM and logistic regression models to
 classify hourly bike sharing data. All these models were used with combination
