@@ -4,13 +4,13 @@
 \newcommand{\bibfile}{GroupProject}
 \newcommand{\theauthor}{Nianzu Ma, Paul Landes, Pavan Reddy, Shreya Ghosh}
 \newcommand{\doctitle}{CS 491 - Machine Learning - Spring 2014}
-\newcommand{\doctype}{Capital BikeShare Predictive Data Analysis Project Report}
+\newcommand{\doctype}{Capital BikeShare Predictive Data Analysis Report}
 \newcommand{\theuniversity}{University of Illinois at Chicago}
 
 
 \newcommand{\ci}[1]{\cite{#1}}
 \newcommand{\rtt}{${\mathit R}^2$}
-\newcommand{\figwidth}{5.5in}
+\newcommand{\figwidth}{5in}
 
 \usepackage{zenacademic}
 \date{}
@@ -223,10 +223,10 @@ very low correlation coefficients (-0.1171 and 0.02942 respectively).
 
 \ddsec{approach}{Approach}
 
-Our approach involved linear regression, logistical regression, na{\"i}ve Bayesian
-classification, SVM, and decision trees.  Both linear regression and SVM was used
-for prediction while logistical regression, na{\"i}ve Bayesian classification,
-SVM and decision trees were used for classification.
+Our approach involved linear regression, logistical regression, na{\"i}ve
+Bayesian classification, SVM, and decision trees.  Both linear regression and
+SVM was used for prediction while logistical regression, na{\"i}ve Bayesian
+classification, SVM and decision trees were used for classification.
 
 
 \ddsubsec{reg}{Regression}
@@ -392,19 +392,11 @@ $\beta_9$ & windspeed & 36.6928 \\ \hline
 \ddsubsubsec{svm-res}{SVM Regression}
 
 The stepwise regression given in \ddsecref{stepwise} did not provide good
-results.  Instead the following parameters were used for the SVM model.
-
-\begin{packedlist}
-\item discretized seasons, months, hours, and weekdays
-\item discretized weather (clear, cloudy, perception)
-\item workingday
-\item atemp
-\item humidity
-\item windspeed
-\end{packedlist}
-
-However, it did perform similar to linear regression as described in
-\ddsecref{lin-reg-res} with a RMSE value of 163.1421.
+results.  Instead the following parameters were used for the SVM model:
+discretized seasons, months, hours, weekdays, weather (clear, cloudy,
+perception), workingday, atemp, humidity and windspeed.  However, it did
+perform similar to linear regression as described in \ddsecref{lin-reg-res}
+with a RMSE value of 163.1421.
 
 The epsilon value used for all SVM regression runs was 0.1.  The results for
 the cross fold validation for SVM are given in \ddtabref{svm-results}.
