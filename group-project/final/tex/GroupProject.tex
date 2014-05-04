@@ -305,16 +305,16 @@ The results of the experiments gave a wide variety of success.
 
 \ddsubsubsec{train-test}{Training and Testing}
 
-We split the entire dataset into a training and test set in 70 : 30 percent
-ratio. The models were trained on the training set and we used these model to
-predict the total number of bike rentals in the testing set.
+We split the entire dataset into a training and test set in 70:30 ratio. The
+models were trained on the training set and we used these model to predict the
+total number of bike rentals in the testing set.
 
 \ddsubsubsec{kfold}{K Fold Cross Validation}
 
-We are using 10 fold cross validation to test accuracy of our models. It
-divides the data in 10 sets and treats 9 sets for training, 1 set for
-testing. This process is repeated 10 times and the output represents average of
-all the runs.
+We are using ten fold cross validation to test accuracy of our models. It
+divides the data in ten sets and treats nine sets for training and one set for
+testing. This process is repeated ten times and the output represents average
+of all the runs.
 
 \ddsubsubsec{reg}{Regression}
 
@@ -344,13 +344,13 @@ increase and decrease the values of regularization parameters accordingly.
 
 \ddsubsubsec{eval-class}{Classification}
             
-Evaluation for J48 and logistic regression models is done based on accuracy,
-precision, recall and f-measure. These measures can be computed from truth
-table. Accuracy shows how close the model was in predicting right outcomes,
-precision is the fraction of data marked as relevant and relevant data by test
-$\frac{TP}{TP + FP}$, recall is the fraction of data marked as relevant and all
-data supposed as relevant $\frac{TP}{TP + FN}$ and f-measure is another measure
-to compute a model’s accuracy using precision and recall.
+The evaluation for J48 and logistic regression models is done based on
+accuracy, precision, recall and f-measure. These measures can be computed from
+a truth table. Accuracy shows how close the model was in predicting correct
+outcomes, precision is the fraction of data marked as relevant and relevant
+data by test $\frac{TP}{TP + FP}$, recall is the fraction of data marked as
+relevant and all data supposed as relevant $\frac{TP}{TP + FN}$ and f-measure
+is another measure to compute a model’s accuracy using precision and recall.
 
 
 
@@ -436,13 +436,13 @@ predictions for these outliers.  The results are summarized in
 
 \ddsubsubsec{des-tree-res}{J48 Decision Trees}
 
-After using the four classification models discussed in this paper, we observed
-that J48 produced the best results. From the decision tree provided by J48 we
-made few conclusions about how the model was handling different features. It
-seemed like the model was most dependent on time of the day and then affected
-by weather conditions or what day of the week it is. Also the feature
-``season'' was given second preference to feature ``weathersit''. This feature
-mentions if there was rain, snow, thunder or humidity.
+After using the four classification models we observed that J48 produced the
+best results. From the decision tree provided by J48 we made few conclusions
+about how the model was handling different features. The model was most
+dependent on time of the day and then affected by weather conditions or what
+day of the week it is. The feature ``season'' was given second preference to
+feature ``weathersit''. This feature contains the random variable containing
+states of rain, snow, thunder and humidity.
 
 \begin{ddbasictable}{dec-tree-res}{Decision Tree Results}{|l|l|l|l|l|l|l|}
 \hline
@@ -464,7 +464,9 @@ The accuracy of the decision tree classification was 99.536\%
 
 \ddsubsubsec{log-reg-res}{Logistic Regression}
 
-Throughout our experiments it seemed like logistic regressions did not provide results as good as J48. We tried different feature sets, thresholds and evaluation models, but still J48 provided better results.
+Throughout our experiments logistic regression did not provide results as good
+as J48. We tried different feature sets, thresholds and evaluation models, but
+still J48 provided better results.
 
 \begin{ddbasictable}{log-reg-res}{Logistic Regression Results}{|l|l|l|l|l|l|l|}
 \hline
@@ -472,7 +474,6 @@ Throughout our experiments it seemed like logistic regressions did not provide r
 & 0.998 & 0.047 & 0.998 & 0.998 & 0.998 & low \\ \hline
 & 0.953 & 0.002 & 0.956 & 0.953 & 0.955 & high \\ \hline
 Weighted Avg. & 0.996 & 0.045 & 0.996 & 0.996 & 0.996 & \\ \hline
-
 \end{ddbasictable}
 
 \begin{ddbasictable}{dec-tree-res}{Logistic Regression Confusion Matrix}{|l|l|l|}
@@ -487,7 +488,12 @@ The accuracy of logistic regression classification was 99.60\%.
 
 \ddsubsubsec{svm-class-res}{SVM (SMO)}
 
-We used SVM for regression models as well as classification models. The regression model did not predict accurate classes for outliers, but when it was used for classification it produced results almost as good as J48. To get a better comparison between J48 and SVM we tried different threshold values and it seemed J48 performs better than SVM in most cases. 
+We used SVM for regression models as well as classification models. The
+regression model did not predict accurate classes for outliers, but when it was
+used for classification it produced results almost as good as J48. To get a
+better comparison between J48 and SVM we tried different threshold values and
+it seemed J48 performs better than SVM in most cases.
+
 \begin{ddbasictable}{svm-class-res}{SVM Classification By Hour}{|l|l|l|l|l|l|l|}
 \hline
 & {\bf TP Rate} & {\bf FP Rate} & {\bf Precision} & {\bf Recall} & {\bf F-Measure} & {\bf Class} \\ \hline
@@ -495,7 +501,6 @@ We used SVM for regression models as well as classification models. The regressi
 0.931 & 0.001 & 0.979 & 0.931 & 0.955 & 0.906 & high \\ \hline
 Weighted Avg. & 0.996 & 0.066 & 0.996 & 0.996 & 0.996 & 0.623 \\ \hline
 \end{ddbasictable}
-
 
 \begin{ddbasictable}{svm-conf-res}{SVM Classification Confusion Matrix}{|l|l|l|}
 \hline
@@ -531,15 +536,14 @@ Weighted Avg. & 0.993 & 0.113 & 0.993 & 0.993 & 0.993 & 0.881 \\ \hline
 
 The accuracy of na{\"i}ve bayes classification was 99.3451\%.
 
-In earlier trials J48 decision tree made
-better predictions than logistic regression. After coming across a set of
-features that gave us optimum outcome we tried tweaking classification model
-arguments. For J48 decision tree we tried changing confidence factor, value of
-seed and minimum number of object, but since the accuracy was already high
-making these changes to argument did not cause any significant change to the
-outcome. Similar results where seen with logistic regression model. J48 and SVM
-showed better results, but when we changed threshold of classes J48 produced
-better results.
+In earlier trials J48 decision tree made better predictions than logistic
+regression. After coming across a set of features that gave us optimum outcome
+we tried tweaking classification model arguments. For J48 decision tree we
+tried changing confidence factor, value of seed and minimum number of object,
+but since the accuracy was already high making these changes to argument did
+not cause any significant change to the outcome. Similar results where seen
+with logistic regression model. J48 and SVM showed better results, but when we
+changed threshold of classes J48 produced better results.
 
 \ddsubsec{res-conc}{Results Conclusion}
 
@@ -549,7 +553,6 @@ are both 0.40, which shows they have moderate positive linear relationship.
 the positively correlated bike counts and temperature by hour.
 
 \ddfigure{\figwidth}{predicted-vs-actuals}{Predicted Values vs. Actual Values}
-
 
 
 \ddsubsec{impl}{Implementation}
